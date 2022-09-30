@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/placeholder_tileset.png-9b16964c80ebcf15858e24024183bd81.stex"
+path="res://.import/warrior.png-848f62c4563a69ff0eb288ebe20b2bbe.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/TileSets/placeholder_tileset.png"
-dest_files=[ "res://.import/placeholder_tileset.png-9b16964c80ebcf15858e24024183bd81.stex" ]
+source_file="res://Assets/Characters/warrior.png"
+dest_files=[ "res://.import/warrior.png-848f62c4563a69ff0eb288ebe20b2bbe.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
