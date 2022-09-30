@@ -76,10 +76,9 @@ pause={
 
 [layer_names]
 
-2d_physics/layer_1=false
-2d_physics/layer_2=false
-2d_physics/Player="Player"
-2d_physics/Area="Area"
+2d_physics/layer_1="Player"
+2d_physics/layer_2="Area"
+2d_physics/layer_3="Map"
 
 [physics]
 
