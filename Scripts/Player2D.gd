@@ -86,6 +86,10 @@ func _physics_process(delta):
 			jump(isOnGround)
 			
 	velocity = move_and_slide(velocity, Vector2.UP)
+	for i in get_slide_count():
+		var collision = get_slide_collision(i)
+		if collision.collider.has_method("collide_with"):
+			collision.collider.collide_with(collision, self)
 	pass
 
 func _reverseGravity():
