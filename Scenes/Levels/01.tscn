@@ -11,6 +11,7 @@
 
 [node name="Lever" parent="YSort" instance=ExtResource( 3 )]
 position = Vector2( 352, 608 )
+auto_trigger_back_time = 5
 
 [node name="Door" parent="YSort" instance=ExtResource( 4 )]
 position = Vector2( 256, 544 )

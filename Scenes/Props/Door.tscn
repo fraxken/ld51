@@ -20,3 +20,5 @@ margin_bottom = 96.0
 color = Color( 0.0392157, 0.168627, 0.678431, 1 )
 
 [node name="MoveTween" type="Tween" parent="."]
+
+[connection signal="tween_all_completed" from="MoveTween" to="." method="_on_MoveTween_tween_all_completed"]

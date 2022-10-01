@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scripts/Player2D.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Characters/warrior.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Lights/light.png" type="Texture" id=3]
+[ext_resource path="res://Scripts/Camera2D.gd" type="Script" id=4]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 4.0
@@ -74,6 +75,11 @@ zoom = Vector2( 0.4, 0.4 )
 limit_smoothed = true
 smoothing_enabled = true
 smoothing_speed = 2.0
+script = ExtResource( 4 )
+
+[node name="Timer" type="Timer" parent="Camera2D"]
+
+[node name="Tween" type="Tween" parent="Camera2D"]
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 10.0
@@ -84,4 +90,5 @@ position = Vector2( -4, 9 )
 enabled = true
 cast_to = Vector2( 9, 0 )
 
+[connection signal="timeout" from="Camera2D/Timer" to="Camera2D" method="_on_Timer_timeout"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
