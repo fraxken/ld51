@@ -4,6 +4,7 @@ signal lever_turned(state)
 
 export (bool) var state = false
 export (int) var delay = 1.0
+export (int) var auto_trigger_back_time = 0
 
 onready var timer = $Timer
 
@@ -22,7 +23,9 @@ func _ready():
 
 func _input(event):
 	if event.is_action_pressed("use"):
-		_trigger_lever()
+		timer.stop()
+		if playerOnLever && leverUsable:
+			_trigger_lever()
 		
 func _renderToCurrentState():
 	var newCurrentState = "enabled" if state else "disabled"
@@ -30,12 +33,18 @@ func _renderToCurrentState():
 	$Sprite.color = color
 		
 func _trigger_lever():
-	if playerOnLever && leverUsable:
-		state = not state
-		_renderToCurrentState()
-		leverUsable = false
+	state = not state
+	_renderToCurrentState()
+	leverUsable = false
+	# timer.start()
+	emit_signal("lever_turned", state)
+		
+func unlock():
+	if auto_trigger_back_time > 0:
+		print("start timer: ", auto_trigger_back_time)
+		timer.set_wait_time(auto_trigger_back_time)
 		timer.start()
-		emit_signal("lever_turned", state)
+	leverUsable = true
 
 func _on_Lever_body_entered(body):
 	playerOnLever = true
@@ -44,5 +53,6 @@ func _on_Lever_body_exited(body):
 	playerOnLever = false
 
 func _on_Timer_timeout():
-	leverUsable = true
+	print("timer timeout")
+	_trigger_lever()
 	

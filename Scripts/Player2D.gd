@@ -102,6 +102,7 @@ func _physics_process(delta):
 	pass
 
 func _reverseGravity():
+	Globals.camera.shake(100)
 	reverseGravityEnabled = not reverseGravityEnabled
 	$Sprite.flip_v = not $Sprite.flip_v
 	touchedGroundAtLeastOnce = false
