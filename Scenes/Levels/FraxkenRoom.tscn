@@ -1,9 +1,20 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Assets/TileSets/PlaceholderTileSet.tres" type="TileSet" id=1]
 [ext_resource path="res://Scripts/LevelController.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/Props/FallingPlatform.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Props/Projector.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Props/MovingSpike.tscn" type="PackedScene" id=5]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 72, 0, 0, 0, 0, 272, 72, 0, 0, 0, 0, 272, 0, 0, 0, 0, 0, 0, 0 )
+}
+
+[sub_resource type="Curve2D" id=2]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 0, 104, 0, 0, 0, 0, 0, 0 )
+}
 
 [node name="LevelTest" type="Node2D"]
 script = ExtResource( 2 )
@@ -30,6 +41,16 @@ position = Vector2( 0, 640 )
 position = Vector2( 480, 608 )
 
 [node name="Projector" parent="." instance=ExtResource( 4 )]
-position = Vector2( 384, 512 )
-projectile_direction = Vector2( 0, 1 )
+position = Vector2( -128, 576 )
 projectile_speed = 200
+
+[node name="MovingSpike" parent="." instance=ExtResource( 5 )]
+position = Vector2( -24, 608 )
+curve = SubResource( 1 )
+speed = 3
+
+[node name="MovingSpike2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 536, 512 )
+curve = SubResource( 2 )
+speed = 3
+animation_type = 1
