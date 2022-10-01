@@ -14,6 +14,10 @@ config/name="Ld 51"
 run/main_scene="res://Scenes/UI/StartScreen.tscn"
 config/icon="res://Assets/icon.png"
 
+[autoload]
+
+SceneChanger="*res://Scenes/UI/SceneChanger.tscn"
+
 [debug]
 
 settings/fps/force_fps=120
