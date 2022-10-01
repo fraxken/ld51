@@ -7,6 +7,12 @@
 [node name="LevelTest" type="Node2D"]
 script = ExtResource( 2 )
 
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -768.0
+margin_right = 1280.0
+margin_bottom = 1024.0
+color = Color( 0.121569, 0.121569, 0.121569, 1 )
+
 [node name="TM_Base" type="TileMap" parent="."]
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 32, 32 )
