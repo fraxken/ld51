@@ -135,3 +135,6 @@ func check_box_collision():
 	if collider:
 		print("Box pushing with velocity of %s" % velocity)
 		collider.move(velocity)
+
+func reappear():
+	Globals.controller.teleportPlayerToStartPosition(true)
