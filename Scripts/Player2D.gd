@@ -1,8 +1,8 @@
 extends KinematicBody2D
 
 export (int) var speed = 150
-export (int) var max_speed = 200
-export (int) var jump_speed = 200
+export (int) var acceleration = 2.5
+export (int) var jump_speed = 225
 export (int) var gravity = 350
 export (int) var max_jump = 1
 
@@ -23,20 +23,20 @@ func _input(event):
 		_reverseGravity()
 		
 func get_input():
-	velocity.x = 0
 	if Input.is_action_pressed("right"):
-		velocity.x += speed
+		velocity.x = min(velocity.x + acceleration, speed)
 		$Sprite.flip_h = false
-	if Input.is_action_pressed("left"):
-		velocity.x -= speed
+		$AnimationPlayer.play("Walk")
+	elif Input.is_action_pressed("left"):
+		velocity.x = max(velocity.x - acceleration, -speed)
 		$Sprite.flip_h = true
+		$AnimationPlayer.play("Walk")
+	else:
+		velocity.x = lerp(velocity.x, 0, 0.1)
+		$AnimationPlayer.play("Idle")
 
 func _physics_process(delta):
 	get_input()
-	if velocity.x == 0:
-		$AnimationPlayer.play("Idle")
-	else:
-		$AnimationPlayer.play("Walk")
 		
 	if reverseGravityEnabled == true:
 		velocity.y -= gravity * delta
