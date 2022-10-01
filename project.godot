@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="Ld 51"
-run/main_scene="res://Scenes/Start.tscn"
+run/main_scene="res://Scenes/UI/StartScreen.tscn"
 config/icon="res://Assets/icon.png"
 
 [debug]
