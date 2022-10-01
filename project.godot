@@ -17,6 +17,7 @@ config/icon="res://Assets/icon.png"
 [autoload]
 
 Globals="*res://Scripts/Globals.gd"
+SceneChanger="*res://Scenes/UI/SceneChanger.tscn"
 
 [debug]
 
