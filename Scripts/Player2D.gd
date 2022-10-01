@@ -19,7 +19,7 @@ func _ready():
 	gravityTimer.start()
 
 func _input(event):
-	if event.is_action_pressed("use"):
+	if event.is_action_pressed("gravity"):
 		gravityTimer.start()
 		_reverseGravity()
 		
