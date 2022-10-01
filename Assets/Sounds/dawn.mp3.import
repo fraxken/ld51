@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/dawn.mp3-23a40ed525dee2cf1b5430425f9d9c74.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sounds/dawn.mp3"
+dest_files=[ "res://.import/dawn.mp3-23a40ed525dee2cf1b5430425f9d9c74.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

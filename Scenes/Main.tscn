@@ -3,18 +3,11 @@
 [ext_resource path="res://Scenes/Levels/01.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Area2D.gd" type="Script" id=2]
 [ext_resource path="res://Scripts/LevelController.gd" type="Script" id=3]
+[ext_resource path="res://Assets/Sounds/dawn.mp3" type="AudioStream" id=4]
 [ext_resource path="res://Scripts/Pause.gd" type="Script" id=5]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 48, 32 )
-
-[sub_resource type="Environment" id=1]
-background_mode = 4
-glow_intensity = 1.0
-glow_blend_mode = 0
-glow_hdr_threshold = 1.5
-glow_hdr_luminance_cap = 1.5
-glow_high_quality = true
 
 [node name="GameRoot" type="Node2D"]
 script = ExtResource( 3 )
@@ -54,10 +47,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 0.290196 )
 
-[node name="World" type="WorldEnvironment" parent="."]
-environment = SubResource( 1 )
-
 [node name="StartPosition" type="Node2D" parent="."]
 position = Vector2( 429, 609 )
+
+[node name="GameMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -20.0
+autoplay = true
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_Area2D_body_entered"]
