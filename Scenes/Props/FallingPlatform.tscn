@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scripts/Props/FallingPlatform.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Props/platform-background.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 8 )
+
+[sub_resource type="OccluderPolygon2D" id=2]
+polygon = PoolVector2Array( 0, 0, 0, 16, 64, 16, 64, 0 )
 
 [node name="PlatformContainer" type="Node2D" groups=["platform"]]
 
@@ -28,5 +31,8 @@ shape = SubResource( 1 )
 
 [node name="ResetTimer" type="Timer" parent="FallingPlatform"]
 one_shot = true
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="FallingPlatform"]
+occluder = SubResource( 2 )
 
 [connection signal="timeout" from="FallingPlatform/ResetTimer" to="FallingPlatform" method="_on_ResetTimer_timeout"]
