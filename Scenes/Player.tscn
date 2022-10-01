@@ -81,9 +81,12 @@ script = ExtResource( 4 )
 
 [node name="Tween" type="Tween" parent="Camera2D"]
 
-[node name="Timer" type="Timer" parent="."]
+[node name="GravityTimer" type="Timer" parent="."]
 wait_time = 10.0
 autostart = true
+
+[node name="DieTimer" type="Timer" parent="."]
+one_shot = true
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 position = Vector2( -4, 9 )
@@ -91,4 +94,5 @@ enabled = true
 cast_to = Vector2( 9, 0 )
 
 [connection signal="timeout" from="Camera2D/Timer" to="Camera2D" method="_on_Timer_timeout"]
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="GravityTimer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="DieTimer" to="." method="_on_DieTimer_timeout"]

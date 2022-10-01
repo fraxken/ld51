@@ -17,6 +17,11 @@ auto_trigger_back_time = 5
 position = Vector2( 256, 544 )
 ActionableItemPath = NodePath("../Lever")
 
+[node name="Door2" parent="YSort" instance=ExtResource( 4 )]
+position = Vector2( 480, 544 )
+ActionableItemPath = NodePath("../Lever")
+state = true
+
 [node name="MovingPlatform" parent="YSort" instance=ExtResource( 2 )]
 position = Vector2( 676, 585 )
 move_to = Vector2( 50, -108 )

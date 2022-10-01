@@ -6,7 +6,8 @@ export (int) var max_speed = 150
 export (int) var jump_speed = 300
 export (int) var max_jump = 1
 
-onready var gravityTimer = get_node("Timer")
+onready var gravityTimer = $GravityTimer
+onready var dieTimer = $DieTimer
 
 var velocity = Vector2.ZERO
 var jumpCount: int = 0
@@ -22,14 +23,27 @@ var direction = Vector2.ZERO
 var canDash = true
 
 func _ready():
+	Globals.player = self
+	
 	# TODO: EDIT THIS LATER TO PUT 10
 	gravityTimer.set_wait_time(60)
 	gravityTimer.start()
+	
+	dieTimer.set_wait_time(0.5)
+	dieTimer.connect("timeout", self, "_die_timeout")
 
 func _input(event):
 	if event.is_action_pressed("gravity"):
 		gravityTimer.start()
 		_reverseGravity()
+		
+func die():
+	$AnimationPlayer.play("Idle")
+	set_physics_process(false)
+	dieTimer.start()
+
+func _die_timeout():
+	set_physics_process(true)
 		
 func dash():
 	if Input.is_action_just_pressed("dash") && canDash:
