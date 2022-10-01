@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
-export (int) var gravity = 750
+signal gravity_reversed()
+
 export (int) var speed = 20
 export (int) var max_speed = 150
 export (int) var jump_speed = 300
@@ -15,7 +16,6 @@ var jumpCount: int = 0
 var friction = false
 
 # GRAVITY
-var reverseGravityEnabled = false
 var touchedGroundAtLeastOnce = false
 
 # DASH
@@ -53,7 +53,7 @@ func dash():
 		canDash = true
 
 func jump(isOnGround: bool):
-	var localJumpSpeed = jump_speed if reverseGravityEnabled else -jump_speed
+	var localJumpSpeed = jump_speed if Globals.reverseGravityEnabled else -jump_speed
 	if touchedGroundAtLeastOnce == false && isOnGround:
 		touchedGroundAtLeastOnce = true
 
@@ -80,7 +80,7 @@ func computeDirection():
 		friction = true
 
 func _physics_process(delta):
-	velocity.y += -(gravity * delta) if reverseGravityEnabled else (gravity * delta)
+	velocity.y += -(Globals.gravity * delta) if Globals.reverseGravityEnabled else (Globals.gravity * delta)
 	
 	computeDirection()
 	
@@ -91,7 +91,7 @@ func _physics_process(delta):
 			$RayCast2D.cast_to.x = direction.x * 10
 			
 	var allowActions = true
-	if (!is_on_floor() && reverseGravityEnabled == false) || (!is_on_ceiling() && reverseGravityEnabled == true):
+	if (!is_on_floor() && Globals.reverseGravityEnabled == false) || (!is_on_ceiling() && Globals.reverseGravityEnabled == true):
 		allowActions = false
 	
 	if allowActions or touchedGroundAtLeastOnce:
@@ -117,9 +117,10 @@ func _physics_process(delta):
 
 func _reverseGravity():
 	Globals.camera.shake(100)
-	reverseGravityEnabled = not reverseGravityEnabled
+	Globals.reverseGravityEnabled = not Globals.reverseGravityEnabled
 	$Sprite.flip_v = not $Sprite.flip_v
 	touchedGroundAtLeastOnce = false
+	emit_signal("gravity_reversed")
 
 func _on_Timer_timeout():
 	print("[Player Script] gravity reversed!")
