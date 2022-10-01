@@ -14,7 +14,8 @@ var reverseGravityEnabled = false
 var touchedOnce = false
 
 func _ready():
-	gravityTimer.set_wait_time(10)
+	# TODO: EDIT THIS LATER TO PUT 10
+	gravityTimer.set_wait_time(60)
 	gravityTimer.start()
 
 func _input(event):
