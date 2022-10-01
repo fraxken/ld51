@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 signal gravity_reversed()
 
-export (int) var speed = 20
+export (int) var speed = 50
 export (int) var max_speed = 150
 export (int) var jump_speed = 300
 export (int) var max_jump = 1
@@ -47,6 +47,7 @@ func _die_timeout():
 		
 func dash():
 	if Input.is_action_just_pressed("dash") && canDash:
+		# TODO: fix velocity ?
 		velocity = direction.normalized() * 1000
 		canDash = false
 		yield(get_tree().create_timer(1), "timeout")
@@ -81,7 +82,7 @@ func computeDirection():
 
 func _physics_process(delta):
 	velocity.y += -(Globals.gravity * delta) if Globals.reverseGravityEnabled else (Globals.gravity * delta)
-	
+	friction = false
 	computeDirection()
 	
 	if Input.is_action_pressed("use"):
