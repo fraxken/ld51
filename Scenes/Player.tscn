@@ -79,4 +79,9 @@ smoothing_speed = 2.0
 wait_time = 10.0
 autostart = true
 
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2( -4, 9 )
+enabled = true
+cast_to = Vector2( 9, 0 )
+
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

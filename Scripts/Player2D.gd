@@ -16,7 +16,7 @@ var reverseGravityEnabled = false
 var touchedGroundAtLeastOnce = false
 
 # DASH
-var dashDirection = Vector2.ZERO
+var direction = Vector2.ZERO
 var canDash = true
 
 func _ready():
@@ -31,7 +31,7 @@ func _input(event):
 		
 func dash():
 	if Input.is_action_just_pressed("dash") && canDash:
-		velocity = dashDirection.normalized() * 1000
+		velocity = direction.normalized() * 1000
 		canDash = false
 		yield(get_tree().create_timer(1), "timeout")
 		canDash = true
@@ -54,12 +54,12 @@ func _physics_process(delta):
 	
 	# LEFT / RIGHT movement
 	if Input.is_action_pressed("right"):
-		dashDirection = Vector2(1, 0)
+		direction = Vector2(1, 0)
 		velocity.x = min(velocity.x + speed, max_speed)
 		$Sprite.flip_h = false
 		$AnimationPlayer.play("Walk")
 	elif Input.is_action_pressed("left"):
-		dashDirection = Vector2(-1, 0)
+		direction = Vector2(-1, 0)
 		velocity.x = max(velocity.x - speed, -max_speed)
 		$Sprite.flip_h = true
 		$AnimationPlayer.play("Walk")
@@ -67,6 +67,7 @@ func _physics_process(delta):
 		$AnimationPlayer.play("Idle")
 		friction = true
 		
+	$RayCast2D.cast_to.x = direction.x * 10
 	var allowActions = true
 	if (!is_on_floor() && reverseGravityEnabled == false) || (!is_on_ceiling() && reverseGravityEnabled == true):
 		allowActions = false
@@ -84,12 +85,15 @@ func _physics_process(delta):
 		
 		if Input.is_action_just_pressed("jump"):
 			jump(isOnGround)
-			
+	
 	velocity = move_and_slide(velocity, Vector2.UP)
 	for i in get_slide_count():
 		var collision = get_slide_collision(i)
 		if collision.collider.has_method("collide_with"):
 			collision.collider.collide_with(collision, self)
+	if Input.is_action_pressed("use"):
+		if $RayCast2D.is_colliding() && velocity.x != 0:
+			check_box_collision()
 	pass
 
 func _reverseGravity():
@@ -100,3 +104,10 @@ func _reverseGravity():
 func _on_Timer_timeout():
 	print("[Player Script] gravity reversed!")
 	_reverseGravity()
+	
+func check_box_collision():
+	var collider = $RayCast2D.get_collider()
+	if collider:
+		velocity = direction.normalized() * max_speed
+		print("Box pushing with velocity of %s" % velocity)
+		collider.push(velocity)
