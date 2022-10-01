@@ -11,6 +11,8 @@ onready var gravityTimer = get_node("Timer")
 var velocity = Vector2.ZERO
 var jumpCount: int = 0
 
+var friction = false
+
 # GRAVITY
 var reverseGravityEnabled = false
 var touchedGroundAtLeastOnce = false
@@ -48,11 +50,7 @@ func jump(isOnGround: bool):
 		velocity.y = localJumpSpeed
 		jumpCount += 1
 
-func _physics_process(delta):
-	velocity.y += -(gravity * delta) if reverseGravityEnabled else (gravity * delta)
-	var friction = false
-	
-	# LEFT / RIGHT movement
+func computeDirection():
 	if Input.is_action_pressed("right"):
 		direction = Vector2(1, 0)
 		velocity.x = min(velocity.x + speed, max_speed)
@@ -66,8 +64,18 @@ func _physics_process(delta):
 	else:
 		$AnimationPlayer.play("Idle")
 		friction = true
-		
-	$RayCast2D.cast_to.x = direction.x * 10
+
+func _physics_process(delta):
+	velocity.y += -(gravity * delta) if reverseGravityEnabled else (gravity * delta)
+	
+	computeDirection()
+	
+	if Input.is_action_pressed("use"):
+		if $RayCast2D.is_colliding():
+			check_box_collision()
+		else:
+			$RayCast2D.cast_to.x = direction.x * 10
+			
 	var allowActions = true
 	if (!is_on_floor() && reverseGravityEnabled == false) || (!is_on_ceiling() && reverseGravityEnabled == true):
 		allowActions = false
@@ -91,9 +99,6 @@ func _physics_process(delta):
 		var collision = get_slide_collision(i)
 		if collision.collider.has_method("collide_with"):
 			collision.collider.collide_with(collision, self)
-	if Input.is_action_pressed("use"):
-		if $RayCast2D.is_colliding() && velocity.x != 0:
-			check_box_collision()
 	pass
 
 func _reverseGravity():
@@ -108,6 +113,5 @@ func _on_Timer_timeout():
 func check_box_collision():
 	var collider = $RayCast2D.get_collider()
 	if collider:
-		velocity = direction.normalized() * max_speed
 		print("Box pushing with velocity of %s" % velocity)
-		collider.push(velocity)
+		collider.move(velocity)
