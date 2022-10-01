@@ -11,7 +11,8 @@ onready var tween = $MoveTween
 var follow = Vector2.ZERO
 
 func _ready():
-	_init_tween()
+	if tween != null:
+		_init_tween()
 	
 func _init_tween():
 	tween.interpolate_property(self, "follow", Vector2.ZERO, move_to, move_time, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, idle_duration)
