@@ -115,6 +115,9 @@ func _physics_process(delta):
 		if collision.collider.has_method("collide_with"):
 			collision.collider.collide_with(collision, self)
 	pass
+	
+func hit():
+	Globals.camera.shake(100)
 
 func _reverseGravity():
 	Globals.camera.shake(100)
