@@ -10,8 +10,10 @@ export (int) var speed = 1 setget set_speed
 export (ANIMATION_TYPE) var animation_type setget set_animation_type
 
 onready var animationPlayer = $AnimationPlayer
+onready var spikePlayer = $PathFollow2D/Enemy/SpikePlayer
 
 func _ready():
+	spikePlayer.play("Pulse")
 	play_updated_animation(animationPlayer)
 
 func set_speed(value):

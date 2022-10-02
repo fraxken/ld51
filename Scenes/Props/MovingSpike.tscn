@@ -1,15 +1,32 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scripts/Props/MovingSpike.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Props/moving-spike.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Props/spikeball.png" type="Texture" id=2]
 
 [sub_resource type="Curve2D" id=6]
 _data = {
 "points": PoolVector2Array(  )
 }
 
-[sub_resource type="OccluderPolygon2D" id=7]
-polygon = PoolVector2Array( 5.80629e-05, -13, -13, -5.80629e-05, -5.80629e-05, 13, 13, 5.80629e-05 )
+[sub_resource type="CircleShape2D" id=7]
+radius = 15.0
+
+[sub_resource type="Animation" id=8]
+resource_name = "Pulse"
+length = 1.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.9, 1, 1.05 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 3, 3, 2, 1 ]
+}
 
 [sub_resource type="Animation" id=5]
 resource_name = "MoveAlongPathBounce"
@@ -72,15 +89,16 @@ rotate = false
 collision_layer = 0
 
 [node name="Sprite" type="Sprite" parent="PathFollow2D/Enemy"]
-scale = Vector2( 0.8, 0.8 )
+scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 2 )
+hframes = 12
+frame = 3
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PathFollow2D/Enemy"]
-scale = Vector2( 1.5, 1.5 )
-polygon = PoolVector2Array( 3.87086e-05, -8.66667, -8.66667, -3.87086e-05, -3.87086e-05, 8.66667, 8.66667, 3.87086e-05 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PathFollow2D/Enemy"]
+shape = SubResource( 7 )
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="PathFollow2D/Enemy"]
-occluder = SubResource( 7 )
+[node name="SpikePlayer" type="AnimationPlayer" parent="PathFollow2D/Enemy"]
+anims/Pulse = SubResource( 8 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "MoveAlongPathLoop"

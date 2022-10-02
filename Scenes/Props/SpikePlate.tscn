@@ -5,17 +5,13 @@
 [node name="SpikePlate" type="Node2D"]
 
 [node name="Spike" parent="." instance=ExtResource( 1 )]
-position = Vector2( -4, -4 )
+position = Vector2( -1, -4 )
 scale = Vector2( 0.4, 0.4 )
 
 [node name="Spike2" parent="." instance=ExtResource( 1 )]
-position = Vector2( 4, -4 )
+position = Vector2( 8, -4 )
 scale = Vector2( 0.4, 0.41 )
 
-[node name="Spike3" parent="." instance=ExtResource( 1 )]
-position = Vector2( 12, -4 )
-scale = Vector2( 0.4, 0.4 )
-
 [node name="Spike4" parent="." instance=ExtResource( 1 )]
-position = Vector2( -12, -4 )
+position = Vector2( -10, -4 )
 scale = Vector2( 0.4, 0.4 )

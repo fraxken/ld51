@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/moving-spike.png-9a84fe54a972759843b7375ec3438516.stex"
+path="res://.import/rockbox.png-380b8356b5411cd75eedd5754a75bc8d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Props/moving-spike.png"
-dest_files=[ "res://.import/moving-spike.png-9a84fe54a972759843b7375ec3438516.stex" ]
+source_file="res://Assets/Props/rockbox.png"
+dest_files=[ "res://.import/rockbox.png-380b8356b5411cd75eedd5754a75bc8d.stex" ]
 
 [params]
 
