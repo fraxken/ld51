@@ -1,15 +1,17 @@
 extends Area2D
 
-signal lever_turned(state)
+signal lever_turned()
 
-export (bool) var state = false
-export (int) var delay = 1.0
 export (int) var auto_trigger_back_time = 0
 
 onready var timer = $Timer
 
 var playerOnLever = false
 var leverUsable = true
+var state: bool = false
+
+var registered: int = 0
+var unlocked: int = 0
 
 const COLORS: Dictionary = {
 	"enabled": Color(0, 1, 0, 1),
@@ -18,7 +20,6 @@ const COLORS: Dictionary = {
 
 func _ready():
 	_renderToCurrentState()
-	timer.set_wait_time(delay)
 	timer.connect("timeout", self, "_on_Timer_timeout")
 
 func _input(event):
@@ -36,15 +37,19 @@ func _trigger_lever():
 	state = not state
 	_renderToCurrentState()
 	leverUsable = false
-	# timer.start()
-	emit_signal("lever_turned", state)
+	unlocked = registered
+	emit_signal("lever_turned")
 		
+func register():
+	registered += 1
+	
 func unlock():
-	if auto_trigger_back_time > 0:
-		print("start timer: ", auto_trigger_back_time)
-		timer.set_wait_time(auto_trigger_back_time)
-		timer.start()
-	leverUsable = true
+	unlocked -= 1
+	if unlocked == 0:
+		if auto_trigger_back_time > 0:
+			timer.set_wait_time(auto_trigger_back_time)
+			timer.start()
+		leverUsable = true
 
 func _on_Lever_body_entered(body):
 	playerOnLever = true
@@ -53,6 +58,5 @@ func _on_Lever_body_exited(body):
 	playerOnLever = false
 
 func _on_Timer_timeout():
-	print("timer timeout")
 	_trigger_lever()
 	
