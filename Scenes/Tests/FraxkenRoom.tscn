@@ -47,10 +47,10 @@ cell_size = Vector2( 32, 32 )
 format = 1
 
 [node name="FallingPlatform" parent="." instance=ExtResource( 3 )]
-position = Vector2( 160, 640 )
+position = Vector2( 184, 648 )
 
 [node name="FallingPlatform2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 0, 640 )
+position = Vector2( 40, 648 )
 
 [node name="StartPosition" type="Node2D" parent="."]
 position = Vector2( 480, 608 )

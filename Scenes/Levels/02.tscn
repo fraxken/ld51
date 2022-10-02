@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://Assets/TileSets/PlaceholderTileSet.tres" type="TileSet" id=1]
+[ext_resource path="res://Assets/TileSets/RuinsTileSet_v2.tres" type="TileSet" id=1]
 [ext_resource path="res://Scenes/Props/MovingSpike.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Props/Lever.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Props/Door.tscn" type="PackedScene" id=4]
@@ -17,14 +17,13 @@ _data = {
 }
 
 [sub_resource type="Curve2D" id=1]
-bake_interval = 65.0
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 161, 0, 0, 0, 0, 0, 161, 128, 0, 0, 0, 0, 1, 128, 0, 0, 0, 0, 1, 0 )
+"points": PoolVector2Array( 0, 0, 0, 0, 1, -59, 0, 0, 0, 0, 1, 128 )
 }
 
 [sub_resource type="Curve2D" id=3]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 0, -32, 0, 0, 0, 0, 0, 160 )
+"points": PoolVector2Array( 0, 0, 0, 0, 0, -32, 0, 0, 0, 0, 1, 131 )
 }
 
 [node name="Level02" type="Node2D"]
@@ -33,9 +32,9 @@ script = ExtResource( 5 )
 [node name="Background" type="ColorRect" parent="."]
 margin_left = -736.0
 margin_top = -480.0
-margin_right = 2048.0
-margin_bottom = 1152.0
-color = Color( 0.0941176, 0.0666667, 0.0666667, 1 )
+margin_right = 2179.0
+margin_bottom = 1330.0
+color = Color( 0.168627, 0.133333, 0.164706, 1 )
 
 [node name="StartPosition" type="Node2D" parent="."]
 position = Vector2( 1200, 736 )
@@ -49,6 +48,7 @@ speed = 2
 position = Vector2( 671, 608 )
 curve = SubResource( 1 )
 speed = 2
+animation_type = 1
 
 [node name="MovingSpike3" parent="." instance=ExtResource( 2 )]
 position = Vector2( 848, 384 )
@@ -59,9 +59,6 @@ animation_type = 1
 [node name="YSort" type="YSort" parent="."]
 
 [node name="SpikesContainer" type="Node2D" parent="YSort"]
-
-[node name="SpikePlate" parent="YSort/SpikesContainer" instance=ExtResource( 8 )]
-position = Vector2( 880, 640 )
 
 [node name="SpikePlate43" parent="YSort/SpikesContainer" instance=ExtResource( 8 )]
 position = Vector2( 1200, 544 )
@@ -93,9 +90,6 @@ position = Vector2( 1392, 352 )
 [node name="SpikePlate46" parent="YSort/SpikesContainer" instance=ExtResource( 8 )]
 position = Vector2( 1296, 544 )
 
-[node name="SpikePlate2" parent="YSort/SpikesContainer" instance=ExtResource( 8 )]
-position = Vector2( 912, 640 )
-
 [node name="SpikePlate9" parent="YSort/SpikesContainer" instance=ExtResource( 8 )]
 position = Vector2( 1040, 640 )
 
@@ -114,11 +108,11 @@ position = Vector2( 880, 672 )
 rotation = 3.14159
 
 [node name="SpikePlate5" parent="YSort/SpikesContainer" instance=ExtResource( 8 )]
-position = Vector2( 1168, 608 )
+position = Vector2( 1168, 640 )
 rotation = 3.14159
 
 [node name="SpikePlate6" parent="YSort/SpikesContainer" instance=ExtResource( 8 )]
-position = Vector2( 1200, 608 )
+position = Vector2( 1200, 640 )
 rotation = 3.14159
 
 [node name="SpikePlate12" parent="YSort/SpikesContainer" instance=ExtResource( 8 )]
@@ -165,14 +159,6 @@ rotation = 3.14159
 position = Vector2( 880, 320 )
 rotation = 3.14159
 
-[node name="SpikePlate42" parent="YSort/SpikesContainer" instance=ExtResource( 8 )]
-position = Vector2( 976, 320 )
-rotation = 3.14159
-
-[node name="SpikePlate59" parent="YSort/SpikesContainer" instance=ExtResource( 8 )]
-position = Vector2( 1008, 320 )
-rotation = 3.14159
-
 [node name="SpikePlate23" parent="YSort/SpikesContainer" instance=ExtResource( 8 )]
 position = Vector2( 720, 320 )
 rotation = 3.14159
@@ -202,11 +188,11 @@ position = Vector2( 800, 464 )
 rotation = 1.5708
 
 [node name="SpikePlate57" parent="YSort/SpikesContainer" instance=ExtResource( 8 )]
-position = Vector2( 1024, 496 )
+position = Vector2( 1024, 480 )
 rotation = 1.5708
 
 [node name="SpikePlate58" parent="YSort/SpikesContainer" instance=ExtResource( 8 )]
-position = Vector2( 1024, 464 )
+position = Vector2( 1024, 448 )
 rotation = 1.5708
 
 [node name="SpikePlate28" parent="YSort/SpikesContainer" instance=ExtResource( 8 )]
@@ -249,6 +235,10 @@ rotation = -1.5708
 position = Vector2( 1152, 592 )
 rotation = -1.5708
 
+[node name="SpikePlate47" parent="YSort/SpikesContainer" instance=ExtResource( 8 )]
+position = Vector2( 1152, 623 )
+rotation = -1.5708
+
 [node name="SpikePlate39" parent="YSort/SpikesContainer" instance=ExtResource( 8 )]
 position = Vector2( 896, 496 )
 rotation = -1.5708
@@ -267,13 +257,18 @@ rotation = -1.5708
 
 [node name="MovingPlatform" parent="YSort" instance=ExtResource( 9 )]
 position = Vector2( 576, 736 )
-move_to = Vector2( 0, -50 )
-move_time = 1
+move_to = Vector2( 0, -100 )
+move_time = 2
+speed = 5
 idle_duration = 0
 
-[node name="LevelTeleporter" parent="YSort" instance=ExtResource( 7 )]
-position = Vector2( 682, 405 )
-target_scene = "res://Scenes/Levels/02.tscn"
+[node name="teleporter_end" parent="YSort" instance=ExtResource( 7 )]
+position = Vector2( 672, 416 )
+target_scene = "res://Scenes/Levels/03.tscn"
+
+[node name="teleporter_start" parent="YSort" instance=ExtResource( 7 )]
+position = Vector2( 1200, 768 )
+state = false
 
 [node name="Lever" parent="YSort" instance=ExtResource( 3 )]
 position = Vector2( 1247, 444 )
@@ -293,12 +288,23 @@ ActionableItemPath = NodePath("../Lever2")
 move_to = Vector2( 0, -96 )
 
 [node name="PlatformContainer" parent="YSort" instance=ExtResource( 6 )]
-position = Vector2( 1072, 288 )
+position = Vector2( 1105, 297 )
+
+[node name="PlatformContainer2" parent="YSort" instance=ExtResource( 6 )]
+position = Vector2( 1102, 466 )
 
 [node name="TM_Base" type="TileMap" parent="."]
-modulate = Color( 1.5, 1.5, 1.5, 1 )
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 32, 32 )
-collision_layer = 4
+show_collision = true
 format = 1
-tile_data = PoolIntArray( 327710, 26, 0, 327711, 26, 0, 327712, 26, 0, 327713, 26, 0, 327714, 26, 0, 327715, 26, 0, 327716, 26, 0, 327717, 26, 0, 327718, 26, 0, 327719, 26, 0, 327720, 26, 0, 327721, 26, 0, 327722, 26, 0, 327723, 26, 0, 327724, 26, 0, 393244, 26, 0, 393245, 26, 0, 393246, 26, 0, 393247, 26, 0, 393260, 26, 0, 458780, 26, 0, 458782, 26, 0, 458783, 26, 0, 458796, 26, 0, 524316, 26, 0, 524318, 26, 0, 524319, 26, 0, 524332, 26, 0, 589843, 26, 0, 589844, 26, 0, 589845, 26, 0, 589846, 26, 0, 589847, 26, 0, 589848, 26, 0, 589849, 26, 0, 589850, 26, 0, 589851, 26, 0, 589852, 26, 0, 589854, 26, 0, 589855, 26, 0, 589861, 26, 0, 589868, 26, 0, 655379, 26, 0, 655397, 26, 0, 655404, 26, 0, 720915, 26, 0, 720933, 26, 0, 720935, 26, 0, 720936, 26, 0, 720937, 26, 0, 720938, 26, 0, 720939, 26, 0, 720940, 26, 0, 786451, 26, 0, 786468, 1073741850, 0, 786469, 26, 0, 786470, 26, 0, 786471, 26, 0, 786472, 26, 0, 786473, 26, 0, 786474, 26, 0, 851987, 26, 0, 851996, 26, 0, 851997, 26, 0, 851998, 26, 0, 851999, 26, 0, 852010, 1073741850, 0, 917523, 26, 0, 917524, 26, 0, 917525, 26, 0, 917526, 26, 0, 917527, 26, 0, 917528, 26, 0, 917532, 26, 0, 917533, 26, 0, 917534, 26, 0, 917535, 26, 0, 917546, 1073741850, 0, 983056, 26, 0, 983057, 26, 0, 983058, 26, 0, 983059, 26, 0, 983060, 26, 0, 983061, 26, 0, 983062, 26, 0, 983063, 26, 0, 983064, 26, 0, 983068, 26, 0, 983069, 26, 0, 983070, 26, 0, 983071, 26, 0, 983082, 1073741850, 0, 1048592, 26, 0, 1048617, 1073741850, 0, 1048618, 1073741850, 0, 1114128, 26, 0, 1114149, 26, 0, 1114150, 26, 0, 1114151, 26, 0, 1114152, 26, 0, 1114153, 26, 0, 1114154, 1073741850, 0, 1179664, 26, 0, 1179684, 26, 0, 1179685, 26, 0, 1179686, 26, 0, 1179687, 26, 0, 1179688, 26, 0, 1245200, 26, 0, 1245224, 1073741850, 0, 1310736, 26, 0, 1310742, 26, 0, 1310743, 26, 0, 1310744, 26, 0, 1310747, 26, 0, 1310748, 26, 0, 1310751, 26, 0, 1310752, 26, 0, 1310753, 26, 0, 1310760, 1073741850, 0, 1376272, 26, 0, 1376278, 26, 0, 1376279, 26, 0, 1376280, 26, 0, 1376287, 26, 0, 1376288, 26, 0, 1376289, 26, 0, 1376296, 1073741850, 0, 1441808, 26, 0, 1441832, 1073741850, 0, 1507344, 26, 0, 1507368, 1073741850, 0, 1572880, 26, 0, 1572881, 26, 0, 1572882, 26, 0, 1572883, 26, 0, 1572884, 26, 0, 1572885, 26, 0, 1572886, 26, 0, 1572887, 26, 0, 1572888, 26, 0, 1572889, 26, 0, 1572890, 26, 0, 1572891, 26, 0, 1572892, 26, 0, 1572893, 26, 0, 1572894, 26, 0, 1572895, 26, 0, 1572896, 26, 0, 1572897, 26, 0, 1572898, 26, 0, 1572899, 26, 0, 1572900, 26, 0, 1572901, 26, 0, 1572902, 26, 0, 1572903, 26, 0, 1572904, 26, 0 )
+tile_data = PoolIntArray( 327708, 1, 65537, 327709, 1, 2, 327710, 1, 2, 327711, 1, 2, 327712, 1, 2, 327713, 1, 2, 327714, 1, 2, 327715, 1, 2, 327716, 1, 2, 327717, 1, 2, 327718, 1, 2, 327719, 1, 2, 327720, 1, 2, 327721, 1, 2, 327722, 1, 2, 327723, 1, 2, 327724, 1, 131073, 393244, 7, 262144, 393247, 7, 2, 393260, 7, 1, 458780, 7, 2, 458783, 7, 0, 458796, 7, 2, 524316, 7, 0, 524319, 7, 2, 524332, 7, 1, 589843, 1, 65537, 589844, 1, 2, 589845, 1, 2, 589846, 1, 2, 589847, 1, 2, 589848, 1, 2, 589849, 1, 2, 589850, 1, 2, 589851, 1, 2, 589852, 1, 131073, 589854, 1, 65537, 589855, 1, 131073, 589861, 7, 0, 589868, 7, 0, 655379, 5, 1, 655397, 7, 2, 655404, 7, 2, 720915, 5, 3, 720933, 7, 262144, 720935, 1, 65537, 720936, 1, 2, 720937, 1, 2, 720938, 1, 2, 720939, 1, 2, 720940, 1, 131073, 786451, 5, 1, 786468, 1, 65537, 786469, 1, 2, 786470, 1, 2, 786471, 1, 2, 786472, 1, 2, 786473, 1, 2, 786474, 1, 131073, 851987, 1, 65537, 851988, 1, 2, 851989, 1, 2, 851990, 1, 2, 851991, 1, 2, 851992, 1, 131073, 851996, 1, 65537, 851997, 1, 2, 851998, 1, 2, 851999, 1, 131073, 852010, 5, 1, 917528, 7, 0, 917532, 7, 1, 917535, 7, 2, 917546, 7, 1, 983056, 1, 65537, 983057, 1, 2, 983058, 1, 2, 983059, 1, 2, 983060, 1, 2, 983061, 1, 2, 983062, 1, 2, 983063, 1, 2, 983064, 1, 131073, 983068, 1, 65537, 983069, 1, 2, 983070, 1, 2, 983071, 1, 131073, 983082, 5, 1, 1048592, 5, 3, 1048617, 536870919, 393218, 1048618, 7, 1, 1114128, 5, 1, 1114149, 1, 65537, 1114150, 1, 2, 1114151, 1, 2, 1114152, 1, 2, 1114153, 1, 131073, 1179664, 5, 1, 1179684, 7, 0, 1245200, 5, 4, 1245220, 1, 65537, 1245221, 1, 2, 1245222, 1, 2, 1245223, 1, 2, 1245224, 1, 131073, 1310736, 5, 1, 1310742, 7, 2, 1310743, 7, 0, 1310744, 7, 1, 1310747, 7, 1, 1310748, 7, 2, 1310751, 7, 2, 1310752, 7, 0, 1310753, 7, 1, 1310760, 5, 4, 1376272, 5, 3, 1376278, 7, 0, 1376279, 7, 1, 1376280, 7, 2, 1376287, 7, 1, 1376288, 7, 1, 1376289, 7, 2, 1376296, 5, 1, 1441808, 5, 4, 1441832, 5, 1, 1507344, 5, 1, 1507368, 5, 5, 1572880, 1, 65537, 1572881, 1, 2, 1572882, 1, 2, 1572883, 1, 2, 1572884, 1, 2, 1572885, 1, 2, 1572886, 1, 2, 1572887, 1, 2, 1572888, 1, 2, 1572889, 1, 2, 1572890, 1, 2, 1572891, 1, 2, 1572892, 1, 2, 1572893, 1, 2, 1572894, 1, 2, 1572895, 1, 2, 1572896, 1, 2, 1572897, 1, 2, 1572898, 1, 2, 1572899, 1, 2, 1572900, 1, 2, 1572901, 1, 2, 1572902, 1, 2, 1572903, 1, 2, 1572904, 1, 131073 )
+
+[node name="TM_Decor" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 458786, 0, 4, 720927, 0, 5, 917544, 0, 5, 1179667, 0, 4 )
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color( 0.733333, 0.666667, 0.411765, 1 )
