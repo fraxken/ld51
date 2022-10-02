@@ -28,3 +28,7 @@ func play_updated_animation(ap):
 	match animation_type:
 		ANIMATION_TYPE.LOOP: ap.play("MoveAlongPathLoop")
 		ANIMATION_TYPE.BOUNCE: ap.play("MoveAlongPathBounce")
+
+func _on_Enemy_body_entered(body):
+	Globals.camera.shake(100)
+	Globals.controller.teleportPlayerToStartPosition(true)
