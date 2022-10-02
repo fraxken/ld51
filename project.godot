@@ -28,6 +28,7 @@ config/icon="res://Assets/icon.png"
 
 SceneChanger="*res://Scenes/UI/SceneChanger.tscn"
 Globals="*res://Scripts/Globals.gd"
+Utils="*res://Scripts/Utils.gd"
 
 [debug]
 

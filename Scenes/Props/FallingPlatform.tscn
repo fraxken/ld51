@@ -16,7 +16,7 @@ modulate = Color( 1, 1, 1, 0.623529 )
 position = Vector2( 32, 8 )
 texture = ExtResource( 2 )
 
-[node name="FallingPlatform" type="KinematicBody2D" parent="."]
+[node name="FallingPlatform" type="KinematicBody2D" parent="." groups=["Gravity"]]
 motion/sync_to_physics = true
 script = ExtResource( 1 )
 
@@ -28,6 +28,7 @@ color = Color( 0.921569, 0.0470588, 0.827451, 1 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FallingPlatform"]
 position = Vector2( 32, 8 )
 shape = SubResource( 1 )
+one_way_collision = true
 
 [node name="ResetTimer" type="Timer" parent="FallingPlatform"]
 one_shot = true
