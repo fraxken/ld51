@@ -26,18 +26,18 @@ anchor_bottom = 1.0
 
 [node name="InGame Menu" type="CanvasLayer" parent="."]
 
+[node name="Controllers" parent="InGame Menu" instance=ExtResource( 6 )]
+margin_left = 36.0
+margin_top = 622.0
+margin_right = 191.0
+margin_bottom = 688.0
+
 [node name="Bar" parent="InGame Menu" instance=ExtResource( 1 )]
 margin_left = 440.0
 margin_top = 20.0
 margin_right = 840.0
 margin_bottom = 60.0
 script = ExtResource( 2 )
-
-[node name="Controllers" parent="." instance=ExtResource( 6 )]
-margin_left = 36.0
-margin_top = 622.0
-margin_right = 191.0
-margin_bottom = 688.0
 
 [node name="Pause Menu" type="CanvasLayer" parent="."]
 pause_mode = 2
