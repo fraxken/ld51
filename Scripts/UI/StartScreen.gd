@@ -5,4 +5,4 @@ func _on_ExitButton_pressed():
 
 
 func _on_PlayButton_pressed():
-	SceneChanger.next_scene("res://Scenes/Main.tscn")
+	SceneChanger.next_scene("res://Scenes/Levels/01.tscn")

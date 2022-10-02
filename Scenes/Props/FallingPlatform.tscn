@@ -27,7 +27,6 @@ position = Vector2( 32, 16 )
 texture = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FallingPlatform"]
-visible = false
 position = Vector2( 32, 8 )
 shape = SubResource( 1 )
 one_way_collision = true
@@ -36,7 +35,6 @@ one_way_collision = true
 one_shot = true
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="FallingPlatform"]
-visible = false
 occluder = SubResource( 2 )
 
 [connection signal="timeout" from="FallingPlatform/ResetTimer" to="FallingPlatform" method="_on_ResetTimer_timeout"]

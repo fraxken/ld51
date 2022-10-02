@@ -26,7 +26,7 @@ func _ready():
 	Globals.player = self
 	
 	# TODO: EDIT THIS LATER TO PUT 10
-	gravityTimer.set_wait_time(60)
+	gravityTimer.set_wait_time(10)
 	gravityTimer.start()
 	
 	dieTimer.set_wait_time(0.1)
@@ -39,6 +39,8 @@ func _input(event):
 		
 func die():
 	print("die triggered!")
+	gravityTimer.stop()
+	gravityTimer.start(10)
 	$AnimationPlayer.play("Idle")
 	hit()
 	set_physics_process(false)
