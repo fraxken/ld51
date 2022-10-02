@@ -1,14 +1,15 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scripts/Props/MovingSpike.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Props/moving-spike.png" type="Texture" id=2]
 
 [sub_resource type="Curve2D" id=6]
 _data = {
 "points": PoolVector2Array(  )
 }
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 12, 12 )
+[sub_resource type="OccluderPolygon2D" id=7]
+polygon = PoolVector2Array( 5.80629e-05, -13, -13, -5.80629e-05, -5.80629e-05, 13, 13, 5.80629e-05 )
 
 [sub_resource type="Animation" id=5]
 resource_name = "MoveAlongPathBounce"
@@ -70,14 +71,16 @@ rotate = false
 [node name="Enemy" type="Area2D" parent="PathFollow2D"]
 collision_layer = 0
 
-[node name="ColorRect" type="ColorRect" parent="PathFollow2D/Enemy"]
-margin_left = -12.0
-margin_top = -12.0
-margin_right = 12.0
-margin_bottom = 12.0
+[node name="Sprite" type="Sprite" parent="PathFollow2D/Enemy"]
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 2 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PathFollow2D/Enemy"]
-shape = SubResource( 2 )
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PathFollow2D/Enemy"]
+scale = Vector2( 1.5, 1.5 )
+polygon = PoolVector2Array( 3.87086e-05, -8.66667, -8.66667, -3.87086e-05, -3.87086e-05, 8.66667, 8.66667, 3.87086e-05 )
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="PathFollow2D/Enemy"]
+occluder = SubResource( 7 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "MoveAlongPathLoop"
