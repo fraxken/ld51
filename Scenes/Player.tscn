@@ -139,9 +139,8 @@ shape = SubResource( 1 )
 [node name="Light2D" type="Light2D" parent="."]
 position = Vector2( -9, 5 )
 texture = ExtResource( 3 )
-texture_scale = 2.0
-color = Color( 0.94902, 0.972549, 0.45098, 1 )
-energy = 0.6
+texture_scale = 0.8
+color = Color( 1, 0.717647, 0.27451, 1 )
 shadow_enabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

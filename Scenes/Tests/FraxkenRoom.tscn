@@ -523,7 +523,7 @@ position = Vector2( 0, -32 )
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 32, 32 )
 format = 1
-tile_data = PoolIntArray( 1048569, 1073741852, 0, 983044, 1073741852, 0, 983051, 29, 0, 1114107, 23, 0, 1179652, 23, 0, 1179662, 25, 0, 1376251, 28, 0, 1310732, 28, 0, 1310737, 27, 0, 1572863, 27, 0, 1507332, 28, 0 )
+tile_data = PoolIntArray( 1048569, 1073741852, 0, 983044, 1073741852, 0, 1179662, 25, 0, 1376251, 28, 0, 1310732, 28, 0, 1310737, 27, 0, 1572863, 27, 0, 1507332, 28, 0 )
 
 [node name="TM_New" type="TileMap" parent="."]
 visible = false
@@ -557,4 +557,4 @@ speed = 3
 animation_type = 1
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color( 0.611765, 0.509804, 0.329412, 1 )
+color = Color( 0.733333, 0.666667, 0.411765, 1 )
