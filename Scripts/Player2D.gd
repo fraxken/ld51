@@ -23,6 +23,7 @@ var direction = Vector2.ZERO
 var canDash = true
 
 func _ready():
+	$Sprite.material.set_shader_param("flash_modifier", 0)
 	Globals.playerCanMove = true
 	Globals.player = self
 	
@@ -119,6 +120,7 @@ func _physics_process(delta):
 	pass
 	
 func hit():
+	$FlashPlayer.play("Flash")
 	Globals.camera.shake(100)
 
 func _reverseGravity():
