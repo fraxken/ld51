@@ -55,9 +55,21 @@ func _die_timeout():
 func dash():
 	if Input.is_action_just_pressed("dash") && canDash:
 		# TODO: fix velocity ?
+		var player_was_moving = velocity.x != 0
+		if player_was_moving:
+			max_speed *= 10
+		
 		velocity = direction.normalized() * 1000
 		canDash = false
-		yield(get_tree().create_timer(1), "timeout")
+		
+		var dash_cooldown = 1
+		if player_was_moving:
+			var dash_duration = 0.05
+			dash_cooldown -= dash_duration
+			yield(get_tree().create_timer(dash_duration), "timeout")
+			max_speed = 150
+			
+		yield(get_tree().create_timer(dash_cooldown), "timeout")
 		canDash = true
 
 func jump(isOnGround: bool):
