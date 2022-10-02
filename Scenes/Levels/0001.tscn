@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Assets/TileSets/PlaceholderTileSet.tres" type="TileSet" id=1]
 [ext_resource path="res://Scripts/LevelController.gd" type="Script" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Scenes/Props/MovableBox.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Scenes/Props/FallingPlatform.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Scenes/Props/LevelTeleporter.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Scenes/Props/Projector.tscn" type="PackedScene" id=11]
 
 [node name="Level0001" type="Node2D"]
 script = ExtResource( 2 )
@@ -116,7 +117,7 @@ idle_duration = 1
 position = Vector2( 1226, 641 )
 
 [node name="Lever" parent="YSort" instance=ExtResource( 5 )]
-position = Vector2( 1086, 640 )
+position = Vector2( 1083, 645 )
 auto_trigger_back_time = 12
 
 [node name="Door" parent="YSort" instance=ExtResource( 3 )]
@@ -130,6 +131,16 @@ position = Vector2( 1294, 452 )
 [node name="LevelTeleporter" parent="YSort" instance=ExtResource( 10 )]
 position = Vector2( 643, 607 )
 target_scene = "res://Scenes/Levels/02.tscn"
+
+[node name="Projector" parent="YSort" instance=ExtResource( 11 )]
+position = Vector2( 1024, 498 )
+projectile_direction = Vector2( -1, 0 )
+projectile_speed = 200
+
+[node name="Projector2" parent="YSort" instance=ExtResource( 11 )]
+position = Vector2( 1024, 506 )
+projectile_direction = Vector2( -1, 0 )
+projectile_speed = 200
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 1 )

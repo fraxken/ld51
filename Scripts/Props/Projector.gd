@@ -17,6 +17,8 @@ func _on_ProjectileTimer_timeout():
 	
 	if localDirection == Vector2.UP || localDirection == Vector2.DOWN:
 		instance.rotate(deg2rad(90))
+	if localDirection == Vector2.LEFT:
+		instance.rotate(deg2rad(180))
 	instance.configure(localDirection, projectile_speed)
 	instance.position += localDirection * 4
 	

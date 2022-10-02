@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Assets/TileSets/PlaceholderTileSet.tres" type="TileSet" id=1]
 [ext_resource path="res://Scripts/LevelController.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/Props/MovableBox.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Props/FallingTrap.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Props/ReactiveArea.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Props/Projector.tscn" type="PackedScene" id=6]
 
 [node name="LevelTest" type="Node2D"]
 script = ExtResource( 2 )
@@ -32,3 +33,13 @@ position = Vector2( 532, 556 )
 ActionableItemPath = NodePath("../ReactiveArea")
 opening_delay = 3
 move_to = Vector2( 0, 60 )
+
+[node name="Projector" parent="." instance=ExtResource( 6 )]
+position = Vector2( 154, 589 )
+projectile_speed = 200
+
+[node name="Projector2" parent="." instance=ExtResource( 6 )]
+position = Vector2( 400, 554 )
+time_between_projectile = 2
+projectile_direction = Vector2( -1, 0 )
+projectile_speed = 200
