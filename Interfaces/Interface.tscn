@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Interfaces/bar/time/Bar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/UI/Bar.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/Silkscreen-Bold.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://Scenes/Silkscreen-Regular.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://Scripts/UI/PauseMenu.gd" type="Script" id=5]
+[ext_resource path="res://Interfaces/controls/Controllers.tscn" type="PackedScene" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 20
@@ -31,6 +32,12 @@ margin_top = 20.0
 margin_right = 840.0
 margin_bottom = 60.0
 script = ExtResource( 2 )
+
+[node name="Controllers" parent="." instance=ExtResource( 6 )]
+margin_left = 36.0
+margin_top = 622.0
+margin_right = 191.0
+margin_bottom = 688.0
 
 [node name="Pause Menu" type="CanvasLayer" parent="."]
 pause_mode = 2
