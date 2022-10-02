@@ -173,5 +173,5 @@ rotation = -3.14159
 position = Vector2( 1040, 512 )
 rotation = -3.14159
 
-[node name="PlatformContainer" parent="YSort" instance=ExtResource( 6 )]
-position = Vector2( 1074, 688 )
+[node name="PlatformContainer" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1120, 704 )

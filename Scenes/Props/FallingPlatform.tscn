@@ -1,8 +1,8 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/Props/FallingPlatform.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Props/platform-background.png" type="Texture" id=2]
-[ext_resource path="res://Assets/Props/platform-rock.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Props/plateforme-sheets.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 8 )
@@ -10,41 +10,25 @@ extents = Vector2( 32, 8 )
 [sub_resource type="OccluderPolygon2D" id=2]
 polygon = PoolVector2Array( 0, 0, 0, 16, 64, 16, 64, 0 )
 
-[sub_resource type="Animation" id=3]
-length = 0.001
+[sub_resource type="Animation" id=5]
+resource_name = "Destroy"
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:position")
+tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 32, 16 ) ]
-}
-
-[sub_resource type="Animation" id=4]
-resource_name = "Shake"
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 32, 16 ), Vector2( 33, 17 ), Vector2( 32, 16 ), Vector2( 31, 15 ), Vector2( 33, 16 ), Vector2( 32, 16 ) ]
+"times": PoolRealArray( 0, 0.1, 0.2, 0.4, 0.5, 0.7, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6 ]
 }
 
 [node name="PlatformContainer" type="Node2D" groups=["platform"]]
 
 [node name="DashedBackground" type="Sprite" parent="."]
-modulate = Color( 1, 1, 1, 0.623529 )
-position = Vector2( 32, 8 )
+modulate = Color( 1, 1, 1, 0.32549 )
 texture = ExtResource( 2 )
 
 [node name="FallingPlatform" type="KinematicBody2D" parent="." groups=["Gravity", "Reset"]]
@@ -52,12 +36,10 @@ motion/sync_to_physics = true
 script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="FallingPlatform"]
-modulate = Color( 0.960784, 0.831373, 0.396078, 1 )
-position = Vector2( 32, 16 )
 texture = ExtResource( 3 )
+hframes = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FallingPlatform"]
-position = Vector2( 32, 8 )
 shape = SubResource( 1 )
 one_way_collision = true
 
@@ -65,10 +47,10 @@ one_way_collision = true
 one_shot = true
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="FallingPlatform"]
+position = Vector2( -32, -8 )
 occluder = SubResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="FallingPlatform"]
-anims/RESET = SubResource( 3 )
-anims/Shake = SubResource( 4 )
+anims/Destroy = SubResource( 5 )
 
 [connection signal="timeout" from="FallingPlatform/ResetTimer" to="FallingPlatform" method="_on_ResetTimer_timeout"]

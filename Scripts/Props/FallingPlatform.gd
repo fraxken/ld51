@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
-export var reset_time: float = 2.0
-export var time_before_fall: float = 1.5 
+export var reset_time: float = 1.4
+export var time_before_fall: float = 1.2 
 
 onready var timer = $ResetTimer
 onready var animPlayer = $AnimationPlayer
@@ -23,7 +23,7 @@ func collide_with(collision: KinematicCollision2D, collider: KinematicBody2D):
 	if !isTriggered:
 		isTriggered = true
 		yield(get_tree().create_timer(time_before_fall / 2), "timeout")
-		animPlayer.play("Shake")
+		animPlayer.play("Destroy")
 		yield(get_tree().create_timer(time_before_fall / 2), "timeout")
 		velocity = Vector2.ZERO
 		set_physics_process(true)
@@ -33,6 +33,7 @@ func _on_ResetTimer_timeout():
 	if timeoutExecute:
 		return
 	timeoutExecute = true
+	animPlayer.play_backwards("Destroy")
 	set_physics_process(false)
 	yield(get_tree(), "physics_frame")
 	var temp = collision_layer
