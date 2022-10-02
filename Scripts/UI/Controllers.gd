@@ -2,32 +2,27 @@ extends VBoxContainer
 
 func _input(event):
 	if event.is_action_pressed("up"):
-		$KeyW.play("default")
+		$KeyW.set_frame(1)
 	if event.is_action_pressed("down"):
-		$KeyS.play("default")
+		$KeyS.set_frame(1)
 	if event.is_action_pressed("right"):
-		$KeyD.play("default")
+		$KeyD.set_frame(1)
 	if event.is_action_pressed("left"):
-		$KeyA.play("default")
+		$KeyA.set_frame(1)
 	if event.is_action_pressed("jump"):
-		$KeySpace.play("default")
+		$KeySpace.set_frame(1)
 	if event.is_action_pressed("dash"):
-		$KeyShift.play("default")
+		$KeyShift.set_frame(1)
 
-func _on_KeyA_animation_finished():
-	$KeyA.stop()
-
-func _on_KeyS_animation_finished():
-	$KeyS.stop()
-
-func _on_KeyW_animation_finished():
-	$KeyW.stop()
-
-func _on_KeyD_animation_finished():
-	$KeyD.stop()
-
-func _on_KeyShift_animation_finished():
-	$KeyShift.stop()
-
-func _on_KeySpace_animation_finished():
-	$KeySpace.stop()
+	if event.is_action_released("up"):
+		$KeyW.set_frame(0)
+	if event.is_action_released("down"):
+		$KeyS.set_frame(0)
+	if event.is_action_released("right"):
+		$KeyD.set_frame(0)
+	if event.is_action_released("left"):
+		$KeyA.set_frame(0)
+	if event.is_action_released("jump"):
+		$KeySpace.set_frame(0)
+	if event.is_action_released("dash"):
+		$KeyShift.set_frame(0)
