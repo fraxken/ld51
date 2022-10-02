@@ -1,6 +1,7 @@
 extends HBoxContainer
 
 func _ready():
+	Globals.timerBar = self
 	var timer = Timer.new()
 	
 	timer.set_wait_time(1.0)	
@@ -10,6 +11,9 @@ func _ready():
 	add_child(timer)
 	
 	timer.start()
+	
+func reset():
+	$TextureProgress.value = 0
 	
 func progress_bar(): 
 	if $TextureProgress.value != 100:

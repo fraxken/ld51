@@ -9,7 +9,7 @@ onready var platform = $Platform
 onready var tween = $MoveTween
 
 var follow = Vector2.ZERO
-var state = false
+var state = true
 
 func _ready():
 	_init_tween()
@@ -22,5 +22,9 @@ func _init_tween():
 func _physics_process(delta):
 	platform.position = platform.position.linear_interpolate(follow, 0.075)
 
+func reset_gravity():
+	if !state: reverse_gravity()
+	
 func reverse_gravity():
 	$Platform/CollisionShape2D.rotate(deg2rad(180))
+	state = not state

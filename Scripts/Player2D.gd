@@ -38,7 +38,7 @@ func _input(event):
 		_reverseGravity()
 		
 func die():
-	print("die triggered!")
+	_resetGravity()
 	gravityTimer.stop()
 	gravityTimer.start(10)
 	$AnimationPlayer.play("Idle")
@@ -125,6 +125,16 @@ func hit():
 	$FlashPlayer.play("Flash")
 	Globals.camera.shake(100)
 
+func _resetGravity():
+	var nodes = Utils.findNodeDescendantsInGroup(get_node("/root"), "Gravity")
+	for node in nodes:
+		if node.has_method("reset_gravity"): node.reset_gravity()
+		
+	Globals.timerBar.reset()
+	Globals.reverseGravityEnabled = false
+	$Sprite.flip_v = false
+	touchedGroundAtLeastOnce = false
+	
 func _reverseGravity():
 	var nodes = Utils.findNodeDescendantsInGroup(get_node("/root"), "Gravity")
 	for node in nodes:

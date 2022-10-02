@@ -8,6 +8,7 @@ onready var reset_position = global_position
 
 var velocity = Vector2()
 var isTriggered = false
+var state = true
 
 func _ready():
 	set_physics_process(false)
@@ -35,6 +36,10 @@ func _on_ResetTimer_timeout():
 	collision_layer = temp
 	isTriggered = false
 	
+func reset_gravity():
+	if !state: reverse_gravity()
+	
 func reverse_gravity():
 	$CollisionShape2D.rotate(deg2rad(180))
+	state = not state
 	
