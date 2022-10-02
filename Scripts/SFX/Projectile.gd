@@ -14,6 +14,7 @@ func configure(newDirectionValue: Vector2, newSpeed):
 	speed = newSpeed
 	
 func _on_Projectile_body_entered(body):
-	if body.has_method("hit"):
-		body.hit();
+	if body.has_method("hit") && body.is_in_group("player"):
+		body.hit()
+		Globals.controller.teleportPlayerToStartPosition(true)
 	queue_free()

@@ -26,5 +26,5 @@ func _open(state):
 	tween.start()
 	
 func _on_FreeArea_body_entered(body):
-	if (body.get_name() == "Player2D"):
-		print("game over")
+	if body.is_in_group("player"):
+		Globals.controller.teleportPlayerToStartPosition(true)

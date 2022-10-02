@@ -1,11 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Assets/TileSets/PlaceholderTileSet.tres" type="TileSet" id=1]
 [ext_resource path="res://Scenes/Props/MovableBox.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Props/LevelTeleporter.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Props/FallingPlatform.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scripts/LevelController.gd" type="Script" id=5]
-[ext_resource path="res://Box.gd" type="Script" id=6]
 [ext_resource path="res://Scenes/Props/SpikePlate.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Assets/TileSets/RuinsTileSet.tres" type="TileSet" id=8]
 
@@ -33,7 +32,6 @@ target_scene = "res://Scenes/Levels/02.tscn"
 
 [node name="Box2" parent="YSort" instance=ExtResource( 2 )]
 position = Vector2( 490, 461 )
-script = ExtResource( 6 )
 
 [node name="FirstSpikesContainer" type="YSort" parent="YSort"]
 

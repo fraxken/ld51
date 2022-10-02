@@ -27,7 +27,7 @@ _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 0, -32, 0, 0, 0, 0, 0, 160 )
 }
 
-[node name="Level01" type="Node2D"]
+[node name="Level02" type="Node2D"]
 script = ExtResource( 5 )
 
 [node name="Background" type="ColorRect" parent="."]

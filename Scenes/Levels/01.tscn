@@ -29,7 +29,6 @@ target_scene = "res://Scenes/Levels/02.tscn"
 
 [node name="Teleporter_start" parent="YSort" instance=ExtResource( 7 )]
 position = Vector2( 1312, 768 )
-state = false
 
 [node name="Lever" parent="YSort" instance=ExtResource( 3 )]
 position = Vector2( 379, 612 )
