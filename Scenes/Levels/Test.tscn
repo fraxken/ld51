@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Assets/TileSets/PlaceholderTileSet.tres" type="TileSet" id=1]
 [ext_resource path="res://Scripts/LevelController.gd" type="Script" id=2]
-[ext_resource path="res://Scenes/Props/Box.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Props/MovableBox.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Props/FallingTrap.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Props/ReactiveArea.tscn" type="PackedScene" id=5]
 
 [node name="LevelTest" type="Node2D"]
 script = ExtResource( 2 )
@@ -14,10 +16,19 @@ format = 1
 tile_data = PoolIntArray( 1310720, 26, 0, 1310721, 26, 0, 1310722, 26, 0, 1310723, 26, 0, 1310724, 26, 0, 1310725, 26, 0, 1310726, 26, 0, 1310727, 26, 0, 1310728, 26, 0, 1310729, 26, 0, 1310730, 26, 0, 1310731, 26, 0, 1310732, 26, 0, 1310733, 26, 0, 1310734, 26, 0, 1310735, 26, 0, 1310736, 26, 0, 1310737, 26, 0, 1376256, 26, 0, 1376257, 26, 0, 1376258, 26, 0, 1376259, 26, 0, 1376260, 26, 0, 1376261, 26, 0, 1376262, 26, 0, 1376263, 26, 0, 1376264, 26, 0, 1376265, 26, 0, 1376266, 26, 0, 1376267, 26, 0, 1376268, 26, 0, 1376269, 26, 0, 1376270, 26, 0, 1376271, 26, 0, 1376272, 26, 0, 1376273, 26, 0 )
 
 [node name="StartPosition" type="Node2D" parent="."]
-position = Vector2( 480, 576 )
+position = Vector2( 374, 585 )
 
 [node name="Box" parent="." instance=ExtResource( 3 )]
 position = Vector2( 105, 620 )
 
 [node name="Box2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 239, 620 )
+
+[node name="ReactiveArea" parent="." instance=ExtResource( 5 )]
+position = Vector2( 435, 606 )
+
+[node name="FallingTrap" parent="." instance=ExtResource( 4 )]
+position = Vector2( 532, 556 )
+ActionableItemPath = NodePath("../ReactiveArea")
+opening_delay = 3
+move_to = Vector2( 0, 60 )

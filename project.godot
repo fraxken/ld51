@@ -26,8 +26,8 @@ config/icon="res://Assets/icon.png"
 
 [autoload]
 
-SceneChanger="*res://Scenes/UI/SceneChanger.tscn"
 Globals="*res://Scripts/Globals.gd"
+SceneChanger="*res://Scenes/UI/SceneChanger.tscn"
 Utils="*res://Scripts/Utils.gd"
 
 [debug]

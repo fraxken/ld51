@@ -141,6 +141,5 @@ func _on_Timer_timeout():
 	
 func check_box_collision():
 	var collider = $RayCast2D.get_collider()
-	if collider:
-		print("Box pushing with velocity of %s" % velocity)
+	if collider.name.find("Box") != -1:
 		collider.move(velocity)
