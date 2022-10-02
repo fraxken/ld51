@@ -154,13 +154,11 @@ anims/Flash = SubResource( 10 )
 anims/RESET = SubResource( 11 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( -1, 0 )
-offset = Vector2( 0, -50 )
 current = true
-zoom = Vector2( 0.4, 0.4 )
+zoom = Vector2( 0.36, 0.36 )
 limit_smoothed = true
 smoothing_enabled = true
-smoothing_speed = 2.0
+smoothing_speed = 4.0
 script = ExtResource( 4 )
 
 [node name="HUD" parent="Camera2D" instance=ExtResource( 5 )]
