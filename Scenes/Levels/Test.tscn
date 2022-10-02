@@ -25,7 +25,7 @@ position = Vector2( 105, 620 )
 position = Vector2( 239, 620 )
 
 [node name="ReactiveArea" parent="." instance=ExtResource( 5 )]
-position = Vector2( 435, 606 )
+position = Vector2( 438, 606 )
 
 [node name="FallingTrap" parent="." instance=ExtResource( 4 )]
 position = Vector2( 532, 556 )

@@ -54,10 +54,12 @@ func unlock():
 		leverUsable = true
 
 func _on_Lever_body_entered(body):
-	playerOnLever = true
+	if body.is_in_group("player"):
+		playerOnLever = true
 
 func _on_Lever_body_exited(body):
-	playerOnLever = false
+	if body.is_in_group("player"):
+		playerOnLever = false
 
 func _on_Timer_timeout():
 	_trigger_lever()
