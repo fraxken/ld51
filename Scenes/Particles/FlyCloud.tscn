@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="CanvasItemMaterial" id=2]
+
+[node name="FlyCloud" type="CPUParticles2D"]
+material = SubResource( 2 )
+amount = 10
+lifetime = 2.0
+fract_delta = false
+direction = Vector2( 0, 1 )
+spread = 90.0
+initial_velocity = 75.0
+orbit_velocity = 1.0
+color = Color( 0, 0, 0, 1 )
