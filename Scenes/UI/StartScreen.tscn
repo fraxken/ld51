@@ -29,7 +29,7 @@ margin_bottom = 440.0
 
 [node name="PlayButton" type="Button" parent="VBoxContainer"]
 margin_right = 320.0
-margin_bottom = 72.0
+margin_bottom = 78.0
 size_flags_vertical = 3
 
 [node name="Label" type="Label" parent="VBoxContainer/PlayButton"]
@@ -43,7 +43,7 @@ valign = 1
 [node name="ExitButton" type="Button" parent="VBoxContainer"]
 margin_top = 82.0
 margin_right = 320.0
-margin_bottom = 154.0
+margin_bottom = 160.0
 size_flags_vertical = 3
 
 [node name="Label" type="Label" parent="VBoxContainer/ExitButton"]

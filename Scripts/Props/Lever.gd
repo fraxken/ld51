@@ -5,6 +5,7 @@ signal lever_turned()
 export (int) var auto_trigger_back_time = 0
 
 onready var timer = $Timer
+onready var animPlayer = $AnimationPlayer
 
 var playerOnLever = false
 var leverUsable = true
@@ -13,13 +14,11 @@ var state: bool = false
 var registered: int = 0
 var unlocked: int = 0
 
-const COLORS: Dictionary = {
-	"enabled": Color(0, 1, 0, 1),
-	"disabled": Color(1, 0, 0, 1) 
-}
-
 func _ready():
-	_renderToCurrentState()
+	if state:
+		animPlayer.play("Open")
+	else:
+		animPlayer.play("Idle")
 	timer.connect("timeout", self, "_on_Timer_timeout")
 
 func _input(event):
@@ -29,9 +28,12 @@ func _input(event):
 			_trigger_lever()
 		
 func _renderToCurrentState():
-	var newCurrentState = "enabled" if state else "disabled"
-	var color = COLORS[newCurrentState]
-	$Sprite.color = color
+	if state:
+		animPlayer.play("Open")
+	else:
+		animPlayer.play_backwards("Open")
+		yield(animPlayer, "animation_finished")
+		animPlayer.play("Idle")
 		
 func _trigger_lever():
 	state = not state
