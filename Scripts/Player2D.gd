@@ -47,6 +47,9 @@ func die():
 	dieTimer.start()
 
 func _die_timeout():
+	var nodes = Utils.findNodeDescendantsInGroup(get_node("/root"), "Reset")
+	for node in nodes:
+		if node.has_method("reset_initial"): node.reset_initial()
 	set_physics_process(true)
 		
 func dash():
