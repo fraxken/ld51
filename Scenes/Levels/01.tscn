@@ -31,13 +31,17 @@ tile_data = PoolIntArray( 524296, 1073741854, 0, 524297, 1073741854, 1, 524298, 
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 32, 32 )
 format = 1
-tile_data = PoolIntArray( 589834, 1073741850, 0, 589846, 1073741850, 0, 589849, 1073741857, 0, 655372, 11, 0, 655377, 23, 0, 1048589, 1073741850, 0, 1048611, 1073741850, 0, 1114126, 23, 0, 1179673, 23, 0, 1245194, 27, 0, 1245207, 27, 0, 1245218, 11, 0, 1376296, 25, 0, 1507365, 27, 0, 1703969, 26, 0 )
+tile_data = PoolIntArray( 589834, 1073741850, 0, 589846, 1073741850, 0, 655372, 11, 0, 655377, 23, 0, 1048589, 1073741850, 0, 1048611, 1073741850, 0, 1114126, 23, 0, 1179673, 23, 0, 1245194, 27, 0, 1245207, 27, 0, 1245218, 11, 0, 1507365, 27, 0, 1703969, 26, 0 )
 
 [node name="YSort" type="YSort" parent="."]
 
-[node name="LevelTeleporter" parent="YSort" instance=ExtResource( 7 )]
-position = Vector2( 831, 332 )
+[node name="Teleporter_end" parent="YSort" instance=ExtResource( 7 )]
+position = Vector2( 832, 384 )
 target_scene = "res://Scenes/Levels/02.tscn"
+
+[node name="Teleporter_start" parent="YSort" instance=ExtResource( 7 )]
+position = Vector2( 1312, 768 )
+state = false
 
 [node name="Lever" parent="YSort" instance=ExtResource( 3 )]
 position = Vector2( 379, 612 )
