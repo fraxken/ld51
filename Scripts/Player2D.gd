@@ -1,7 +1,5 @@
 extends KinematicBody2D
 
-signal gravity_reversed()
-
 export (int) var speed = 50
 export (int) var max_speed = 150
 export (int) var jump_speed = 300
@@ -124,11 +122,14 @@ func hit():
 	Globals.camera.shake(100)
 
 func _reverseGravity():
+	var nodes = Utils.findNodeDescendantsInGroup(get_node("/root"), "Gravity")
+	for node in nodes:
+		if node.has_method("reverse_gravity"): node.reverse_gravity()
+	
 	Globals.camera.shake(100)
 	Globals.reverseGravityEnabled = not Globals.reverseGravityEnabled
 	$Sprite.flip_v = not $Sprite.flip_v
 	touchedGroundAtLeastOnce = false
-	emit_signal("gravity_reversed")
 
 func _on_Timer_timeout():
 	print("[Player Script] gravity reversed!")

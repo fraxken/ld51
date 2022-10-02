@@ -8,6 +8,8 @@ func _ready():
 	self.add_child(player)
 
 func teleportPlayerToStartPosition(die: bool):
-	player.position = $StartPosition.position
-	if die:
-		player.die()
+	var startPos = get_node("StartPosition")
+	if startPos:
+		player.position = $StartPosition.position
+		if die:
+			player.die()

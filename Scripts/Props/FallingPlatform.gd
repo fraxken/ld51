@@ -13,7 +13,7 @@ func _ready():
 	set_physics_process(false)
 
 func _physics_process(delta):
-	velocity.y += Globals.gravity * delta
+	velocity.y += -(Globals.gravity * delta) if Globals.reverseGravityEnabled else (Globals.gravity * delta)
 	position += velocity * delta
 	
 func collide_with(collision: KinematicCollision2D, collider: KinematicBody2D):
@@ -34,3 +34,7 @@ func _on_ResetTimer_timeout():
 	yield(get_tree(), "physics_frame")
 	collision_layer = temp
 	isTriggered = false
+	
+func reverse_gravity():
+	$CollisionShape2D.rotate(deg2rad(180))
+	
