@@ -12,6 +12,7 @@ func _input(event):
 			print("no scene configured!")
 			return
 		Globals.playerCanMove = false
+		Globals.player._resetGravity()
 		SceneChanger.next_scene(target_scene)
 
 func _on_LevelTeleporter_body_entered(body):

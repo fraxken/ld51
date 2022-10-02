@@ -4,7 +4,7 @@ func _ready():
 	Globals.timerBar = self
 	var timer = Timer.new()
 	
-	timer.set_wait_time(1.0)	
+	timer.set_wait_time(0.1)	
 	timer.set_one_shot(false)	
 	timer.connect("timeout", self, "progress_bar")
 	
@@ -17,6 +17,6 @@ func reset():
 	
 func progress_bar(): 
 	if $TextureProgress.value != 100:
-		$TextureProgress.value += 10
+		$TextureProgress.value += 1
 	else:
 		$TextureProgress.value = 0
