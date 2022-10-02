@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Scripts/Player2D.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Characters/warrior.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Lights/light.png" type="Texture" id=3]
 [ext_resource path="res://Scripts/Camera2D.gd" type="Script" id=4]
+[ext_resource path="res://Interfaces/Interface.tscn" type="PackedScene" id=5]
 
 [sub_resource type="Shader" id=6]
 code = "shader_type canvas_item;
@@ -161,6 +162,8 @@ limit_smoothed = true
 smoothing_enabled = true
 smoothing_speed = 2.0
 script = ExtResource( 4 )
+
+[node name="HUD" parent="Camera2D" instance=ExtResource( 5 )]
 
 [node name="Timer" type="Timer" parent="Camera2D"]
 
