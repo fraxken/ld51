@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/LevelController.gd" type="Script" id=1]
 [ext_resource path="res://Assets/TileSets/PlaceholderTileSet.tres" type="TileSet" id=2]
 [ext_resource path="res://Scenes/Props/Door.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Props/Lever.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Props/LevelTeleporter.tscn" type="PackedScene" id=6]
 
 [node name="LevelTest" type="Node2D"]
 script = ExtResource( 1 )
@@ -43,3 +44,7 @@ state = true
 
 [node name="Lever" parent="." instance=ExtResource( 4 )]
 position = Vector2( 192, 608 )
+
+[node name="LevelTeleporter" parent="." instance=ExtResource( 6 )]
+position = Vector2( 641, 603 )
+target_scene = "res://Scenes/Main.tscn"

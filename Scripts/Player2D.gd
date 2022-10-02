@@ -23,6 +23,7 @@ var direction = Vector2.ZERO
 var canDash = true
 
 func _ready():
+	Globals.playerCanMove = true
 	Globals.player = self
 	
 	# TODO: EDIT THIS LATER TO PUT 10
@@ -83,7 +84,8 @@ func computeDirection():
 func _physics_process(delta):
 	velocity.y += -(Globals.gravity * delta) if Globals.reverseGravityEnabled else (Globals.gravity * delta)
 	friction = false
-	computeDirection()
+	if Globals.playerCanMove == true:
+		computeDirection()
 	
 	if Input.is_action_pressed("use"):
 		if $RayCast2D.is_colliding():
