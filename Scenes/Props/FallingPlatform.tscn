@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/Props/FallingPlatform.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Props/platform-background.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Props/platform-rock.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 8 )
@@ -20,10 +21,9 @@ texture = ExtResource( 2 )
 motion/sync_to_physics = true
 script = ExtResource( 1 )
 
-[node name="ColorRect" type="ColorRect" parent="FallingPlatform"]
-margin_right = 64.0
-margin_bottom = 16.0
-color = Color( 0.921569, 0.0470588, 0.827451, 1 )
+[node name="Sprite" type="Sprite" parent="FallingPlatform"]
+position = Vector2( 32, 16 )
+texture = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FallingPlatform"]
 position = Vector2( 32, 8 )

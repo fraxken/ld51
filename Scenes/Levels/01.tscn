@@ -7,6 +7,13 @@
 
 [node name="Level01" type="Node2D"]
 
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -736.0
+margin_top = -480.0
+margin_right = 2048.0
+margin_bottom = 1152.0
+color = Color( 0.0941176, 0.0666667, 0.0666667, 1 )
+
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Lever" parent="YSort" instance=ExtResource( 3 )]
