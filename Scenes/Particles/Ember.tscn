@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0.0643777, 0.371245, 0.997854 )
+colors = PoolColorArray( 1, 0.820313, 0, 1, 0.807617, 0.326517, 0, 1, 0.143555, 0.0382642, 0.00056076, 1 )
+
+[node name="Ember" type="CPUParticles2D"]
+amount = 3
+lifetime = 5.0
+randomness = 1.0
+lifetime_randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 3.0
+direction = Vector2( 0, 1 )
+spread = 180.0
+gravity = Vector2( 0, -38 )
+initial_velocity = 15.0
+color = Color( 1, 0.603922, 0, 1 )
+color_ramp = SubResource( 1 )
+
+[node name="Light2D" type="Light2D" parent="."]
