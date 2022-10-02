@@ -10,6 +10,6 @@ func _ready():
 func teleportPlayerToStartPosition(die: bool):
 	var startPos = get_node("StartPosition")
 	if startPos:
-		player.position = $StartPosition.position
+		player.position = startPos.position
 		if die:
 			player.die()

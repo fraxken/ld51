@@ -29,7 +29,7 @@ func _ready():
 	gravityTimer.set_wait_time(60)
 	gravityTimer.start()
 	
-	dieTimer.set_wait_time(0.5)
+	dieTimer.set_wait_time(0.1)
 	dieTimer.connect("timeout", self, "_die_timeout")
 
 func _input(event):
@@ -38,7 +38,9 @@ func _input(event):
 		_reverseGravity()
 		
 func die():
+	print("die triggered!")
 	$AnimationPlayer.play("Idle")
+	hit()
 	set_physics_process(false)
 	dieTimer.start()
 
