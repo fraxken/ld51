@@ -38,4 +38,4 @@ one_shot = true
 playback_process_mode = 0
 
 [connection signal="body_entered" from="Static/FreeArea" to="." method="_on_FreeArea_body_entered"]
-[connection signal="tween_completed" from="MoveTween" to="." method="_on_MoveTween_tween_completed"]
+[connection signal="tween_all_completed" from="MoveTween" to="." method="_on_MoveTween_tween_all_completed"]
