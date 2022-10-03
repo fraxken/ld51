@@ -33,6 +33,7 @@ position = Vector2( 532, 556 )
 ActionableItemPath = NodePath("../ReactiveArea")
 opening_delay = 3
 move_to = Vector2( 0, 60 )
+repeat = false
 
 [node name="Projector2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 384, 512 )

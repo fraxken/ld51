@@ -5,6 +5,7 @@ export (int) var move_time = 3.0
 export (int) var opening_delay = 0.5
 export (Vector2) var move_to = Vector2.DOWN * 96
 export (int) var idle_duration = 2.0
+export (bool) var repeat = true
 
 onready var fallingTrap = $Static
 onready var tween = $MoveTween
@@ -16,6 +17,8 @@ var targetNode: Node2D
 func _ready():
 	targetNode = get_node(ActionableItemPath)
 	targetNode.connect("reactiveArea_turned", self, "_open", [], CONNECT_ONESHOT)
+	if repeat == true:
+		tween.set_deferred("repeat", true)
 
 func _physics_process(delta):
 	fallingTrap.position = fallingTrap.position.linear_interpolate(follow, 0.075)

@@ -35,9 +35,7 @@ shape = SubResource( 1 )
 one_shot = true
 
 [node name="MoveTween" type="Tween" parent="."]
-repeat = true
 playback_process_mode = 0
-playback/repeat = true
 
 [connection signal="body_entered" from="Static/FreeArea" to="." method="_on_FreeArea_body_entered"]
 [connection signal="tween_completed" from="MoveTween" to="." method="_on_MoveTween_tween_completed"]
