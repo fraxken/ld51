@@ -3,8 +3,12 @@ extends KinematicBody2D
 class_name Box
 
 onready var original_position = global_position
+onready var animPlayer = $AnimationPlayer
 
 var velocity = Vector2.ZERO
+
+func _ready():
+	animPlayer.play("Idle")
 
 func reset_initial():
 	position = original_position

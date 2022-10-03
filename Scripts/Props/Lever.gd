@@ -23,7 +23,7 @@ func _ready():
 	timer.connect("timeout", self, "_on_Timer_timeout")
 
 func _input(event):
-	if event.is_action_pressed("use"):
+	if event.is_action_pressed("ui_select"):
 		timer.stop()
 		if playerOnLever && leverUsable:
 			_trigger_lever()
@@ -56,7 +56,6 @@ func unlock():
 		leverUsable = true
 		
 func reset_initial():
-	print("lever reset!")
 	timer.stop()
 	if state:
 		disableAutoTrigger = true

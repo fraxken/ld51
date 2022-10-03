@@ -91,12 +91,12 @@ func jump(isOnGround: bool):
 		jumpCount += 1
 
 func computeDirection():
-	if Input.is_action_pressed("right"):
+	if Input.is_action_pressed("ui_right"):
 		direction = Vector2(1, 0)
 		velocity.x = min(velocity.x + speed, max_speed)
 		$Sprite.flip_h = false
 		$AnimationPlayer.play("Walk")
-	elif Input.is_action_pressed("left"):
+	elif Input.is_action_pressed("ui_left"):
 		direction = Vector2(-1, 0)
 		velocity.x = max(velocity.x - speed, -max_speed)
 		$Sprite.flip_h = true
@@ -111,7 +111,7 @@ func _physics_process(delta):
 	if Globals.playerCanMove == true:
 		computeDirection()
 	
-	if Input.is_action_pressed("use"):
+	if Input.is_action_pressed("ui_select"):
 		if $RayCast2D.is_colliding():
 			check_box_collision()
 		else:
@@ -132,7 +132,7 @@ func _physics_process(delta):
 			if friction:
 				velocity.x = lerp(velocity.x, 0, 0.05)
 		
-		if Input.is_action_just_pressed("jump"):
+		if Input.is_action_just_pressed("ui_up"):
 			jump(isOnGround)
 	
 	velocity = move_and_slide(velocity, Vector2.UP)

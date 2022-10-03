@@ -15,7 +15,7 @@ func _input(event):
 	if !state:
 		return
 		
-	if playerEntered && event.is_action_pressed("use") && usedOnce == false:
+	if playerEntered && event.is_action_pressed("ui_select") && usedOnce == false:
 		usedOnce = true
 		if !target_scene:
 			print("no scene configured!")
