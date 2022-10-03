@@ -20,7 +20,8 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Ld 51"
+config/name="LD51-Ruins"
+config/description="Ludum Dare 51 - Ruins project (fraxken, demogia, Nicolas.H, Sofian, Imcodebreaker)"
 run/main_scene="res://Scenes/UI/StartScreen.tscn"
 config/icon="res://Assets/icon.png"
 
