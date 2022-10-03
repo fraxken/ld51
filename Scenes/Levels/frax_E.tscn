@@ -1,0 +1,288 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Assets/TileSets/RuinsTileSet_v2.tres" type="TileSet" id=1]
+[ext_resource path="res://Scenes/Props/Projector.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scripts/Props/DeadZone.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/Props/ReactiveArea.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scripts/LevelController.gd" type="Script" id=5]
+[ext_resource path="res://Scenes/Props/FallingPlatform.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Props/LevelTeleporter.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/Props/FallingTrap.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/Props/SpikePlate.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Assets/Props/rockbox.png" type="Texture" id=10]
+[ext_resource path="res://Scenes/Props/MovableBox.tscn" type="PackedScene" id=11]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 32, 32 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 576, 416 )
+
+[node name="Level01" type="Node2D"]
+script = ExtResource( 5 )
+
+[node name="Background" type="ColorRect" parent="."]
+margin_left = -1329.0
+margin_top = -960.0
+margin_right = 1586.0
+margin_bottom = 1106.0
+color = Color( 0.168627, 0.133333, 0.164706, 1 )
+
+[node name="StartPosition" type="Node2D" parent="."]
+position = Vector2( 416, 320 )
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="Projector" parent="YSort" instance=ExtResource( 2 )]
+position = Vector2( -112, 320 )
+projectile_speed = 200
+
+[node name="PlatformContainer" parent="YSort" instance=ExtResource( 6 )]
+position = Vector2( 64, 256 )
+
+[node name="PlatformContainer2" parent="YSort" instance=ExtResource( 6 )]
+position = Vector2( 276, 215 )
+
+[node name="PlatformContainer3" parent="YSort" instance=ExtResource( 6 )]
+position = Vector2( 504, 93 )
+
+[node name="PlatformContainer4" parent="YSort" instance=ExtResource( 6 )]
+position = Vector2( 160, -224 )
+
+[node name="PlatformContainer5" parent="YSort" instance=ExtResource( 6 )]
+position = Vector2( 0, -192 )
+
+[node name="MovableBox" parent="YSort" instance=ExtResource( 11 )]
+position = Vector2( 98, 363 )
+
+[node name="ReactiveArea" parent="YSort" instance=ExtResource( 4 )]
+position = Vector2( -224, -160 )
+
+[node name="FallingTrap" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( -288, -32 )
+rotation = 3.14159
+ActionableItemPath = NodePath("../ReactiveArea")
+
+[node name="Teleporter_end" parent="YSort" instance=ExtResource( 7 )]
+position = Vector2( -384, 96 )
+target_scene = "res://Scenes/Levels/02.tscn"
+
+[node name="Teleporter_start" parent="YSort" instance=ExtResource( 7 )]
+position = Vector2( 416, 352 )
+state = false
+
+[node name="RockBoxContainer" type="StaticBody2D" parent="YSort"]
+position = Vector2( 240, -80 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Rockbox" type="Sprite" parent="YSort/RockBoxContainer"]
+texture = ExtResource( 10 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/RockBoxContainer"]
+shape = SubResource( 1 )
+
+[node name="RockBoxContainer2" type="StaticBody2D" parent="YSort"]
+position = Vector2( -64, 96 )
+
+[node name="Rockbox" type="Sprite" parent="YSort/RockBoxContainer2"]
+texture = ExtResource( 10 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/RockBoxContainer2"]
+shape = SubResource( 1 )
+
+[node name="SpikesContainer" type="Node2D" parent="YSort"]
+
+[node name="SpikePlate" parent="YSort/SpikesContainer" instance=ExtResource( 9 )]
+position = Vector2( 298, 384 )
+
+[node name="SpikePlate2" parent="YSort/SpikesContainer" instance=ExtResource( 9 )]
+position = Vector2( 266, 384 )
+
+[node name="SpikePlate3" parent="YSort/SpikesContainer" instance=ExtResource( 9 )]
+position = Vector2( -111, 128 )
+
+[node name="SpikePlate4" parent="YSort/SpikesContainer" instance=ExtResource( 9 )]
+position = Vector2( -142, 128 )
+
+[node name="SpikePlate5" parent="YSort/SpikesContainer" instance=ExtResource( 9 )]
+position = Vector2( -15, 129 )
+
+[node name="SpikePlate6" parent="YSort/SpikesContainer" instance=ExtResource( 9 )]
+position = Vector2( 81, 32 )
+
+[node name="SpikePlate7" parent="YSort/SpikesContainer" instance=ExtResource( 9 )]
+position = Vector2( 50, 32 )
+
+[node name="SpikePlate8" parent="YSort/SpikesContainer" instance=ExtResource( 9 )]
+position = Vector2( 19, 32 )
+
+[node name="SpikePlate9" parent="YSort/SpikesContainer" instance=ExtResource( 9 )]
+position = Vector2( 113, -96 )
+
+[node name="SpikePlate10" parent="YSort/SpikesContainer" instance=ExtResource( 9 )]
+position = Vector2( 160, 32 )
+
+[node name="SpikePlate11" parent="YSort/SpikesContainer" instance=ExtResource( 9 )]
+position = Vector2( 192, 32 )
+
+[node name="SpikePlate12" parent="YSort/SpikesContainer" instance=ExtResource( 9 )]
+position = Vector2( 224, 32 )
+
+[node name="SpikePlate13" parent="YSort/SpikesContainer" instance=ExtResource( 9 )]
+position = Vector2( 256, 32 )
+
+[node name="SpikePlate14" parent="YSort/SpikesContainer" instance=ExtResource( 9 )]
+position = Vector2( 288, 32 )
+
+[node name="SpikePlate15" parent="YSort/SpikesContainer" instance=ExtResource( 9 )]
+position = Vector2( 320, 32 )
+
+[node name="SpikePlate16" parent="YSort/SpikesContainer" instance=ExtResource( 9 )]
+position = Vector2( 352, 32 )
+
+[node name="SpikePlate17" parent="YSort/SpikesContainer" instance=ExtResource( 9 )]
+position = Vector2( 384, 32 )
+
+[node name="SpikePlate18" parent="YSort/SpikesContainer" instance=ExtResource( 9 )]
+position = Vector2( 128, 32 )
+
+[node name="SpikePlate19" parent="YSort/SpikesContainer" instance=ExtResource( 9 )]
+position = Vector2( 241, -160 )
+
+[node name="SpikePlate20" parent="YSort/SpikesContainer" instance=ExtResource( 9 )]
+position = Vector2( 272, -128 )
+
+[node name="SpikePlate21" parent="YSort/SpikesContainer" instance=ExtResource( 9 )]
+position = Vector2( 309, -128 )
+
+[node name="SpikePlate22" parent="YSort/SpikesContainer" instance=ExtResource( 9 )]
+position = Vector2( 340, -128 )
+
+[node name="SpikePlate23" parent="YSort/SpikesContainer" instance=ExtResource( 9 )]
+position = Vector2( -177, -192 )
+
+[node name="SpikePlate24" parent="YSort/SpikesContainer" instance=ExtResource( 9 )]
+position = Vector2( -209, -192 )
+
+[node name="SpikePlate25" parent="YSort/SpikesContainer" instance=ExtResource( 9 )]
+position = Vector2( -240, -192 )
+
+[node name="SpikePlate26" parent="YSort/SpikesContainer" instance=ExtResource( 9 )]
+position = Vector2( -271, -192 )
+
+[node name="SpikePlate27" parent="YSort/SpikesContainer" instance=ExtResource( 9 )]
+position = Vector2( -367, -32 )
+
+[node name="SpikePlate28" parent="YSort/SpikesContainer" instance=ExtResource( 9 )]
+position = Vector2( -398, -32 )
+
+[node name="SpikePlate29" parent="YSort/SpikesContainer" instance=ExtResource( 9 )]
+position = Vector2( -430, -32 )
+
+[node name="SpikePlate30" parent="YSort/SpikesContainer" instance=ExtResource( 9 )]
+position = Vector2( 15, 160 )
+rotation = 3.14159
+
+[node name="SpikePlate31" parent="YSort/SpikesContainer" instance=ExtResource( 9 )]
+position = Vector2( -17, 160 )
+rotation = 3.14159
+
+[node name="SpikePlate32" parent="YSort/SpikesContainer" instance=ExtResource( 9 )]
+position = Vector2( -49, 160 )
+rotation = 3.14159
+
+[node name="SpikePlate33" parent="YSort/SpikesContainer" instance=ExtResource( 9 )]
+position = Vector2( -81, 160 )
+rotation = 3.14159
+
+[node name="SpikePlate34" parent="YSort/SpikesContainer" instance=ExtResource( 9 )]
+position = Vector2( -113, 160 )
+rotation = 3.14159
+
+[node name="SpikePlate35" parent="YSort/SpikesContainer" instance=ExtResource( 9 )]
+position = Vector2( 64, 64 )
+rotation = 3.14159
+
+[node name="SpikePlate36" parent="YSort/SpikesContainer" instance=ExtResource( 9 )]
+position = Vector2( 96, 64 )
+rotation = 3.14159
+
+[node name="SpikePlate37" parent="YSort/SpikesContainer" instance=ExtResource( 9 )]
+position = Vector2( 128, 64 )
+rotation = 3.14159
+
+[node name="SpikePlate38" parent="YSort/SpikesContainer" instance=ExtResource( 9 )]
+position = Vector2( 160, 64 )
+rotation = 3.14159
+
+[node name="SpikePlate39" parent="YSort/SpikesContainer" instance=ExtResource( 9 )]
+position = Vector2( 192, 64 )
+rotation = 3.14159
+
+[node name="SpikePlate40" parent="YSort/SpikesContainer" instance=ExtResource( 9 )]
+position = Vector2( 224, 64 )
+rotation = 3.14159
+
+[node name="SpikePlate41" parent="YSort/SpikesContainer" instance=ExtResource( 9 )]
+position = Vector2( 256, 64 )
+rotation = 3.14159
+
+[node name="SpikePlate42" parent="YSort/SpikesContainer" instance=ExtResource( 9 )]
+position = Vector2( 288, 64 )
+rotation = 3.14159
+
+[node name="SpikePlate43" parent="YSort/SpikesContainer" instance=ExtResource( 9 )]
+position = Vector2( 320, 64 )
+rotation = 3.14159
+
+[node name="SpikePlate44" parent="YSort/SpikesContainer" instance=ExtResource( 9 )]
+position = Vector2( 352, 64 )
+rotation = 3.14159
+
+[node name="SpikePlate45" parent="YSort/SpikesContainer" instance=ExtResource( 9 )]
+position = Vector2( 384, 64 )
+rotation = 3.14159
+
+[node name="SpikePlate46" parent="YSort/SpikesContainer" instance=ExtResource( 9 )]
+position = Vector2( 495, 192 )
+rotation = 3.14159
+
+[node name="SpikePlate47" parent="YSort/SpikesContainer" instance=ExtResource( 9 )]
+position = Vector2( 463, 192 )
+rotation = 3.14159
+
+[node name="SpikePlate48" parent="YSort/SpikesContainer" instance=ExtResource( 9 )]
+position = Vector2( 431, 192 )
+rotation = 3.14159
+
+[node name="SpikePlate49" parent="YSort/SpikesContainer" instance=ExtResource( 9 )]
+position = Vector2( 32, 64 )
+rotation = 3.14159
+
+[node name="TM_Base" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( -327691, 1, 65537, -327690, 1, 2, -327689, 1, 4, -327688, 1, 2, -327687, 1, 2, -327686, 1, 131073, -262155, 5, 5, -327673, 7, 0, -196619, 7, 0, -262137, 1, 65537, -262136, 1, 3, -262135, 1, 2, -262134, 1, 4, -262133, 1, 1, -262132, 1, 131073, -131083, 5, 1, -196605, 5, 5, -65547, 5, 3, -131069, 5, 1, -14, 1, 65537, -13, 1, 3, -12, 1, 2, -11, 1, 131073, -65533, 5, 3, 65522, 7, 2, 3, 5, 6, 131058, 7, 0, 65536, 1, 65537, 65537, 1, 6, 65538, 1, 2, 65539, 1, 3, 65540, 1, 2, 65541, 1, 2, 65542, 1, 4, 65543, 1, 2, 65544, 1, 2, 65545, 1, 3, 65546, 1, 2, 65547, 1, 2, 65548, 1, 131073, 196594, 7, 1, 131072, 7, 1, 262130, 1, 65537, 262131, 1, 4, 262132, 1, 2, 262133, 1, 131073, 196608, 7, 0, 327675, 1, 65537, 327676, 1, 2, 327677, 1, 3, 327678, 1, 2, 327679, 1, 2, 262144, 1, 131073, 393211, 5, 5, 327693, 1, 65537, 327694, 1, 6, 327695, 1, 2, 327696, 1, 131073, 458747, 5, 1, 393232, 5, 5, 524283, 7, 1, 458768, 5, 3, 589819, 5, 3, 524304, 5, 4, 655355, 5, 1, 589840, 7, 1, 720891, 5, 6, 655376, 7, 0, 786427, 1, 65537, 786428, 1, 2, 786429, 1, 4, 786430, 1, 2, 786431, 1, 2, 720896, 1, 131073, 720906, 1, 65537, 720907, 1, 2, 720908, 1, 4, 720909, 1, 2, 720910, 1, 2, 720911, 1, 6, 720912, 1, 131073, 786432, 1, 65537, 786433, 1, 2, 786434, 1, 3, 786435, 1, 2, 786436, 1, 2, 786437, 1, 4, 786438, 1, 2, 786439, 1, 3, 786440, 1, 2, 786441, 1, 2, 786442, 1, 131073 )
+
+[node name="TM_Decor" type="TileMap" parent="."]
+position = Vector2( 592, 320 )
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( -917531, 1073741824, 1, -917514, 0, 1, -720903, 0, 5, -655384, 0, 4, -327690, 0, 4, -131093, 0, 4, 65516, 0, 1 )
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color( 0.733333, 0.666667, 0.411765, 1 )
+
+[node name="DeadZone" type="Area2D" parent="."]
+position = Vector2( -256, 544 )
+script = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeadZone"]
+visible = false
+position = Vector2( 352, -512 )
+shape = SubResource( 2 )
+
+[connection signal="body_entered" from="DeadZone" to="DeadZone" method="_on_DeadZone_body_entered"]
+[connection signal="body_exited" from="DeadZone" to="DeadZone" method="_on_DeadZone_body_exited"]
