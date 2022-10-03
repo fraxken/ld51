@@ -34,12 +34,8 @@ ActionableItemPath = NodePath("../ReactiveArea")
 opening_delay = 3
 move_to = Vector2( 0, 60 )
 
-[node name="Projector" parent="." instance=ExtResource( 3 )]
-position = Vector2( 154, 589 )
-projectile_speed = 200
-
 [node name="Projector2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 400, 554 )
+position = Vector2( 384, 512 )
 time_between_projectile = 2
 projectile_direction = Vector2( -1, 0 )
 projectile_speed = 200
