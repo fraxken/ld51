@@ -16,4 +16,5 @@ func _trigger_reactiveArea():
 	emit_signal("reactiveArea_turned", state)
 
 func _on_ReactiveArea_body_entered(body):
-	_trigger_reactiveArea()
+	if body.is_in_group("player"):
+		_trigger_reactiveArea()
