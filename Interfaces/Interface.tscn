@@ -6,18 +6,17 @@
 [ext_resource path="res://Scenes/Silkscreen-Regular.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://Scripts/UI/PauseMenu.gd" type="Script" id=5]
 [ext_resource path="res://Interfaces/controls/Controllers.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Interfaces/buttons/button.png" type="Texture" id=7]
+[ext_resource path="res://Interfaces/buttons/button_pressed.png" type="Texture" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 size = 20
 font_data = ExtResource( 3 )
 
-[sub_resource type="DynamicFont" id=2]
-font_data = ExtResource( 4 )
-
-[sub_resource type="DynamicFont" id=3]
-font_data = ExtResource( 4 )
-
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=5]
+size = 25
+outline_size = 2
+outline_color = Color( 0.592157, 0.52549, 0.47451, 1 )
 font_data = ExtResource( 4 )
 
 [node name="Interface" type="Control"]
@@ -65,50 +64,50 @@ text = "Pause - Take a deep breath"
 [node name="ButtonGroup" type="VBoxContainer" parent="Pause Menu/Pause"]
 margin_left = 460.0
 margin_top = 240.0
-margin_right = 820.0
+margin_right = 780.0
 margin_bottom = 520.0
 
-[node name="ResumeButton" type="Button" parent="Pause Menu/Pause/ButtonGroup"]
-margin_right = 360.0
-margin_bottom = 90.0
-rect_min_size = Vector2( 0, 60 )
-size_flags_vertical = 3
+[node name="ResumeButton" type="TextureButton" parent="Pause Menu/Pause/ButtonGroup"]
+margin_right = 320.0
+margin_bottom = 80.0
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 8 )
 
 [node name="Label" type="Label" parent="Pause Menu/Pause/ButtonGroup/ResumeButton"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_fonts/font = SubResource( 2 )
-text = "OK. I'm BACK"
+custom_fonts/font = SubResource( 5 )
+text = "RESUME GAME"
 align = 1
 valign = 1
 
-[node name="RestartButton" type="Button" parent="Pause Menu/Pause/ButtonGroup"]
-margin_top = 94.0
-margin_right = 360.0
-margin_bottom = 185.0
-rect_min_size = Vector2( 0, 80 )
-size_flags_vertical = 3
+[node name="RestartButton" type="TextureButton" parent="Pause Menu/Pause/ButtonGroup"]
+margin_top = 84.0
+margin_right = 320.0
+margin_bottom = 164.0
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 8 )
 
 [node name="Label" type="Label" parent="Pause Menu/Pause/ButtonGroup/RestartButton"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_fonts/font = SubResource( 3 )
-text = "Ok. Give me a fresh Start"
+custom_fonts/font = SubResource( 5 )
+text = "Restart Game"
 align = 1
 valign = 1
 
-[node name="ExitButton" type="Button" parent="Pause Menu/Pause/ButtonGroup"]
-margin_top = 189.0
-margin_right = 360.0
-margin_bottom = 280.0
-rect_min_size = Vector2( 0, 80 )
-size_flags_vertical = 3
+[node name="ExitButton" type="TextureButton" parent="Pause Menu/Pause/ButtonGroup"]
+margin_top = 168.0
+margin_right = 320.0
+margin_bottom = 248.0
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 8 )
 
 [node name="Label" type="Label" parent="Pause Menu/Pause/ButtonGroup/ExitButton"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_fonts/font = SubResource( 4 )
-text = "I'm done. I give up"
+custom_fonts/font = SubResource( 5 )
+text = "Exit Game"
 align = 1
 valign = 1
 
