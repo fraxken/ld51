@@ -1,0 +1,162 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://Assets/TileSets/RuinsTileSet_v2.tres" type="TileSet" id=1]
+[ext_resource path="res://Scenes/Props/MovableBox.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Props/Lever.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Props/Door.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scripts/LevelController.gd" type="Script" id=5]
+[ext_resource path="res://Scenes/Props/FallingPlatform.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Props/LevelTeleporter.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/Props/FallingTrap.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Assets/Props/rockbox.png" type="Texture" id=10]
+[ext_resource path="res://Scripts/Props/DeadZone.gd" type="Script" id=11]
+[ext_resource path="res://Scenes/Props/ReactiveArea.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Scenes/SFX/Torch.tscn" type="PackedScene" id=14]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 32, 32 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 960, 536 )
+
+[node name="Level01" type="Node2D"]
+script = ExtResource( 5 )
+
+[node name="Background" type="ColorRect" parent="."]
+margin_left = -832.0
+margin_top = -800.0
+margin_right = 2083.0
+margin_bottom = 1266.0
+color = Color( 0.168627, 0.133333, 0.164706, 1 )
+
+[node name="StartPosition" type="Node2D" parent="."]
+position = Vector2( 416, 320 )
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="Door" parent="YSort" instance=ExtResource( 4 )]
+position = Vector2( 0, 416 )
+rotation = -1.5708
+ActionableItemPath = NodePath("../Lever")
+opening_delay = 1
+
+[node name="FallingTrap" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 576, 608 )
+rotation = 3.14159
+ActionableItemPath = NodePath("../ReactiveArea")
+move_to = Vector2( 0, 128 )
+
+[node name="Lever" parent="YSort" groups=["Reset"] instance=ExtResource( 3 )]
+position = Vector2( 224, 160 )
+auto_trigger_back_time = 6
+
+[node name="Teleporter_end" parent="YSort" instance=ExtResource( 7 )]
+position = Vector2( 1600, 544 )
+target_scene = "res://Scenes/Levels/02.tscn"
+
+[node name="Teleporter_start" parent="YSort" instance=ExtResource( 7 )]
+position = Vector2( 416, 352 )
+state = false
+
+[node name="PlatformContainer" parent="YSort" instance=ExtResource( 6 )]
+position = Vector2( 608, 160 )
+
+[node name="PlatformContainer3" parent="YSort" instance=ExtResource( 6 )]
+position = Vector2( 864, 448 )
+
+[node name="PlatformContainer4" parent="YSort" instance=ExtResource( 6 )]
+position = Vector2( 1024, 608 )
+
+[node name="PlatformContainer5" parent="YSort" instance=ExtResource( 6 )]
+position = Vector2( 1184, 672 )
+
+[node name="PlatformContainer2" parent="YSort" instance=ExtResource( 6 )]
+position = Vector2( 416, 160 )
+
+[node name="MovableBox" parent="YSort" instance=ExtResource( 2 )]
+position = Vector2( 1419, 684 )
+
+[node name="RockBoxContainer" type="StaticBody2D" parent="YSort"]
+position = Vector2( 832, 160 )
+
+[node name="Rockbox" type="Sprite" parent="YSort/RockBoxContainer"]
+texture = ExtResource( 10 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/RockBoxContainer"]
+shape = SubResource( 1 )
+
+[node name="RockBoxContainer3" type="StaticBody2D" parent="YSort"]
+position = Vector2( 640, 320 )
+
+[node name="Rockbox" type="Sprite" parent="YSort/RockBoxContainer3"]
+texture = ExtResource( 10 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/RockBoxContainer3"]
+shape = SubResource( 1 )
+
+[node name="RockBoxContainer4" type="StaticBody2D" parent="YSort"]
+position = Vector2( 704, 320 )
+
+[node name="Rockbox" type="Sprite" parent="YSort/RockBoxContainer4"]
+texture = ExtResource( 10 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/RockBoxContainer4"]
+shape = SubResource( 1 )
+
+[node name="RockBoxContainer5" type="StaticBody2D" parent="YSort"]
+position = Vector2( 704, 256 )
+
+[node name="Rockbox" type="Sprite" parent="YSort/RockBoxContainer5"]
+texture = ExtResource( 10 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/RockBoxContainer5"]
+shape = SubResource( 1 )
+
+[node name="RockBoxContainer2" type="StaticBody2D" parent="YSort"]
+position = Vector2( 352, 480 )
+
+[node name="Rockbox" type="Sprite" parent="YSort/RockBoxContainer2"]
+texture = ExtResource( 10 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/RockBoxContainer2"]
+shape = SubResource( 1 )
+
+[node name="ReactiveArea" parent="YSort" instance=ExtResource( 12 )]
+position = Vector2( 480, 448 )
+
+[node name="Torch" parent="YSort" instance=ExtResource( 14 )]
+position = Vector2( 512, 320 )
+
+[node name="Torch2" parent="YSort" instance=ExtResource( 14 )]
+position = Vector2( 1536, 512 )
+
+[node name="Torch3" parent="YSort" instance=ExtResource( 14 )]
+position = Vector2( 640, 480 )
+rotation = 3.14159
+
+[node name="TM_Base" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 2, 1, 65537, 3, 1, 2, 4, 1, 2, 5, 1, 3, 6, 1, 2, 7, 1, 2, 8, 1, 4, 9, 1, 2, 10, 1, 2, 11, 1, 6, 12, 1, 2, 13, 1, 3, 14, 1, 2, 15, 1, 2, 16, 1, 2, 17, 1, 4, 18, 1, 2, 19, 1, 2, 20, 1, 2, 21, 1, 2, 22, 1, 3, 23, 1, 2, 24, 1, 2, 25, 1, 2, 26, 1, 2, 27, 1, 131073, 65538, 5, 1, 65563, 5, 1, 131074, 5, 5, 131099, 5, 5, 196610, 5, 1, 196635, 5, 1, 262146, 5, 5, 262171, 5, 4, 327682, 5, 3, 327707, 5, 5, 393218, 5, 4, 393222, 1, 65537, 393223, 1, 2, 393224, 1, 131073, 393239, 1, 65537, 393240, 1, 2, 393241, 1, 2, 393242, 1, 2, 393243, 1, 131073, 458754, 5, 1, 458758, 5, 1, 458760, 5, 1, 458775, 5, 3, 524290, 5, 5, 524294, 5, 5, 524296, 5, 1, 524311, 5, 4, 589826, 5, 1, 589830, 5, 1, 589832, 5, 5, 589847, 5, 1, 655362, 5, 1, 655366, 5, 4, 655368, 5, 4, 655383, 5, 5, 786431, 1, 65537, 720896, 1, 2, 720897, 1, 4, 720898, 1, 131073, 720902, 5, 5, 720904, 1, 65537, 720905, 1, 2, 720906, 1, 3, 720907, 1, 2, 720908, 1, 2, 720909, 1, 2, 720910, 1, 6, 720911, 1, 2, 720912, 1, 3, 720913, 1, 2, 720914, 1, 3, 720915, 1, 2, 720916, 1, 2, 720917, 1, 2, 720918, 1, 2, 720919, 1, 131073, 851967, 7, 0, 786438, 5, 6, 786455, 7, 0, 917503, 1, 65537, 851968, 1, 3, 851969, 1, 2, 851970, 1, 131073, 851974, 1, 65537, 851975, 1, 2, 851976, 1, 6, 851977, 1, 2, 851978, 1, 2, 851979, 1, 2, 851980, 1, 3, 851981, 1, 2, 851982, 1, 2, 851983, 1, 2, 851984, 1, 3, 851985, 1, 2, 851986, 1, 3, 851987, 1, 2, 851988, 1, 2, 851989, 1, 2, 851990, 1, 2, 851991, 1, 131073, 917504, 5, 4, 983040, 5, 1, 1048576, 5, 3, 1114112, 5, 5, 1114159, 1, 65537, 1114160, 1, 6, 1114161, 1, 1, 1114162, 1, 4, 1114163, 1, 1, 1114164, 1, 131073, 1179648, 5, 1, 1179695, 5, 3, 1245184, 5, 1, 1245195, 1, 65537, 1245196, 1, 2, 1245197, 1, 3, 1245198, 1, 2, 1245199, 1, 4, 1245200, 1, 131073, 1245203, 1, 65537, 1245204, 1, 3, 1245205, 1, 2, 1245206, 1, 2, 1245207, 1, 131073, 1245231, 5, 3, 1310720, 5, 4, 1310731, 7, 0, 1310736, 7, 458753, 1310737, 7, 393216, 1310738, 7, 393216, 1310739, 7, 393217, 1310767, 5, 5, 1376256, 5, 5, 1376267, 5, 3, 1376303, 7, 0, 1441792, 5, 6, 1441803, 5, 5, 1441834, 1, 65537, 1441835, 1, 2, 1441836, 1, 3, 1441837, 1, 4, 1441838, 1, 2, 1441839, 1, 131073, 1507370, 5, 1, 1572906, 7, 0, 1638442, 5, 1 )
+
+[node name="TM_Decor" type="TileMap" parent="."]
+position = Vector2( 592, 320 )
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( -327675, 0, 1, -196614, 0, 4, -262144, 0, 4, 65527, 0, 1, 2, 0, 2, 3, 0, 3, 393200, 0, 5, 393203, 0, 5, 524291, 0, 1, 720920, 0, 1 )
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color( 0.733333, 0.666667, 0.411765, 1 )
+
+[node name="DeadZone" type="Area2D" parent="."]
+position = Vector2( 512, 384 )
+script = ExtResource( 11 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeadZone"]
+position = Vector2( 352, 104 )
+shape = SubResource( 2 )
+
+[connection signal="body_entered" from="DeadZone" to="DeadZone" method="_on_DeadZone_body_entered"]
+[connection signal="body_exited" from="DeadZone" to="DeadZone" method="_on_DeadZone_body_exited"]
