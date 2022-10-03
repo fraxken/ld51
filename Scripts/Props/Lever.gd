@@ -10,6 +10,7 @@ onready var animPlayer = $AnimationPlayer
 var playerOnLever = false
 var leverUsable = true
 var state: bool = false
+var disableAutoTrigger = false
 
 var registered: int = 0
 var unlocked: int = 0
@@ -48,10 +49,18 @@ func register():
 func unlock():
 	unlocked -= 1
 	if unlocked == 0:
-		if auto_trigger_back_time > 0:
+		if !disableAutoTrigger and auto_trigger_back_time > 0:
 			timer.set_wait_time(auto_trigger_back_time)
 			timer.start()
+		disableAutoTrigger = false
 		leverUsable = true
+		
+func reset_initial():
+	print("lever reset!")
+	timer.stop()
+	if state:
+		disableAutoTrigger = true
+		_trigger_lever()
 
 func _on_Lever_body_entered(body):
 	if body.is_in_group("player"):

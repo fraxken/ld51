@@ -37,4 +37,4 @@ func play_updated_animation(ap):
 
 func _on_Enemy_body_entered(body):
 	Globals.camera.shake(100)
-	Globals.controller.teleportPlayerToStartPosition(true)
+	Globals.controller.teleportPlayerToStartPosition(true, "moving spike")

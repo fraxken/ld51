@@ -27,4 +27,4 @@ func _open(state):
 	
 func _on_FreeArea_body_entered(body):
 	if body.is_in_group("player"):
-		Globals.controller.teleportPlayerToStartPosition(true)
+		Globals.controller.teleportPlayerToStartPosition(true, "falling trap")

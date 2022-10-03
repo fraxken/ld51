@@ -7,9 +7,10 @@ func _ready():
 	teleportPlayerToStartPosition(false)
 	self.add_child(player)
 
-func teleportPlayerToStartPosition(die: bool):
+func teleportPlayerToStartPosition(die: bool, kind = "none"):
 	var startPos = get_node("StartPosition")
 	if startPos:
 		player.position = startPos.position
 		if die:
+			print("player killed by: ", kind)
 			player.die()
