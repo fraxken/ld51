@@ -155,7 +155,7 @@ anims/RESET = SubResource( 11 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
-zoom = Vector2( 0.36, 0.36 )
+zoom = Vector2( 0.45, 0.45 )
 limit_smoothed = true
 smoothing_enabled = true
 smoothing_speed = 4.0
