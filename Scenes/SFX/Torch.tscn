@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Assets/Props/torch.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/Particles/Ember.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/Lights/light.png" type="Texture" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Flame"
+length = 0.3
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5 ]
+}
+
+[node name="Torch" type="Sprite"]
+texture = ExtResource( 1 )
+hframes = 6
+vframes = 5
+frame = 5
+
+[node name="Ember" parent="." instance=ExtResource( 2 )]
+position = Vector2( 0, 16 )
+scale = Vector2( 2, 2 )
+amount = 6
+emission_sphere_radius = 1.0
+spread = 100.0
+gravity = Vector2( 0, -20 )
+
+[node name="Light2D" type="Light2D" parent="."]
+position = Vector2( 0, 8 )
+texture = ExtResource( 3 )
+texture_scale = 0.4
+color = Color( 0.792157, 0.462745, 0.2, 1 )
+shadow_enabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Flame"
+anims/Flame = SubResource( 1 )

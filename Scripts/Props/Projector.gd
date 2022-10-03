@@ -9,6 +9,7 @@ onready var timer = $ProjectileTimer
 var projectileScene = preload("res://Scenes/SFX/Projectile.tscn")
 
 func _ready():
+	$AnimationPlayer.play("Idle")
 	timer.set_wait_time(time_between_projectile)
 
 func _on_ProjectileTimer_timeout():

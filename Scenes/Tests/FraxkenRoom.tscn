@@ -1,21 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Assets/TileSets/RuinsTileSet.tres" type="TileSet" id=1]
 [ext_resource path="res://Scripts/LevelController.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/Props/FallingPlatform.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Props/Projector.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Scenes/Props/MovingSpike.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/SFX/Torch.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Assets/TileSets/RuinsTileSet_v2.tres" type="TileSet" id=6]
-
-[sub_resource type="Curve2D" id=1]
-_data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 72, 0, 0, 0, 0, 272, 72, 0, 0, 0, 0, 272, 0, 0, 0, 0, 0, 0, 0 )
-}
-
-[sub_resource type="Curve2D" id=2]
-_data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 0, 104, 0, 0, 0, 0, 0, 0 )
-}
 
 [node name="LevelTest" type="Node2D"]
 script = ExtResource( 2 )
@@ -55,20 +45,15 @@ position = Vector2( 40, 648 )
 [node name="StartPosition" type="Node2D" parent="."]
 position = Vector2( 480, 608 )
 
+[node name="Torch" parent="." instance=ExtResource( 5 )]
+position = Vector2( 304, 608 )
+
+[node name="Torch2" parent="." instance=ExtResource( 5 )]
+position = Vector2( -80, 608 )
+
 [node name="Projector" parent="." instance=ExtResource( 4 )]
-position = Vector2( -128, 576 )
+position = Vector2( -128, 600 )
 projectile_speed = 200
-
-[node name="MovingSpike" parent="." instance=ExtResource( 5 )]
-position = Vector2( -24, 608 )
-curve = SubResource( 1 )
-speed = 3
-
-[node name="MovingSpike2" parent="." instance=ExtResource( 5 )]
-position = Vector2( 536, 512 )
-curve = SubResource( 2 )
-speed = 3
-animation_type = 1
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color( 0.733333, 0.666667, 0.411765, 1 )

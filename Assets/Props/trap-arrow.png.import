@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/torch.png-70b3dd205db797862df289f5a11a1c6b.stex"
+path="res://.import/trap-arrow.png-c3718c932ad8ac9bb6faa5b1c26515f5.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Props/torch.png"
-dest_files=[ "res://.import/torch.png-70b3dd205db797862df289f5a11a1c6b.stex" ]
+source_file="res://Assets/Props/trap-arrow.png"
+dest_files=[ "res://.import/trap-arrow.png-c3718c932ad8ac9bb6faa5b1c26515f5.stex" ]
 
 [params]
 
