@@ -17,11 +17,14 @@
 script = ExtResource( 12 )
 
 [node name="Background" type="ColorRect" parent="."]
-margin_left = -715.0
-margin_top = -501.0
-margin_right = 2069.0
-margin_bottom = 1131.0
-color = Color( 0.0941176, 0.0666667, 0.0666667, 1 )
+margin_left = -832.0
+margin_top = -800.0
+margin_right = 2083.0
+margin_bottom = 1266.0
+color = Color( 0.168627, 0.133333, 0.164706, 1 )
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color( 0.733333, 0.666667, 0.411765, 1 )
 
 [node name="StartPosition" type="Node2D" parent="."]
 position = Vector2( 1240, 642 )
@@ -31,39 +34,35 @@ position = Vector2( 1240, 642 )
 [node name="FirstSpikeContainer" type="YSort" parent="YSort"]
 
 [node name="SpikePlate" parent="YSort/FirstSpikeContainer" instance=ExtResource( 4 )]
-position = Vector2( 1296, 320 )
+position = Vector2( 1294, 320 )
 rotation = 3.14159
 
 [node name="SpikePlate2" parent="YSort/FirstSpikeContainer" instance=ExtResource( 4 )]
-position = Vector2( 1234, 320 )
+position = Vector2( 1232, 320 )
 rotation = 3.14159
 
 [node name="SpikePlate3" parent="YSort/FirstSpikeContainer" instance=ExtResource( 4 )]
-position = Vector2( 1203, 320 )
+position = Vector2( 1201, 320 )
 rotation = 3.14159
 
-[node name="SpikePlate5" parent="YSort/FirstSpikeContainer" instance=ExtResource( 4 )]
-position = Vector2( 1056, 336 )
-rotation = 1.5708
-
 [node name="SpikePlate6" parent="YSort/FirstSpikeContainer" instance=ExtResource( 4 )]
-position = Vector2( 1265, 320 )
+position = Vector2( 1263, 320 )
 rotation = 3.14159
 
 [node name="SpikePlate7" parent="YSort/FirstSpikeContainer" instance=ExtResource( 4 )]
-position = Vector2( 1140, 320 )
+position = Vector2( 1139, 320 )
 rotation = 3.14159
 
 [node name="SpikePlate8" parent="YSort/FirstSpikeContainer" instance=ExtResource( 4 )]
-position = Vector2( 1171, 320 )
+position = Vector2( 1170, 320 )
 rotation = 3.14159
 
 [node name="SpikePlate9" parent="YSort/FirstSpikeContainer" instance=ExtResource( 4 )]
-position = Vector2( 1109, 320 )
+position = Vector2( 1108, 320 )
 rotation = 3.14159
 
 [node name="SpikePlate10" parent="YSort/FirstSpikeContainer" instance=ExtResource( 4 )]
-position = Vector2( 1078, 320 )
+position = Vector2( 1077, 320 )
 rotation = 3.14159
 
 [node name="SecondSpikeContainer" type="YSort" parent="YSort"]
@@ -115,6 +114,7 @@ move_to = Vector2( 0, 92 )
 idle_duration = 1
 
 [node name="ReactiveArea" parent="YSort" instance=ExtResource( 5 )]
+visible = false
 position = Vector2( 1226, 641 )
 
 [node name="Lever" parent="YSort" instance=ExtResource( 8 )]
@@ -148,6 +148,10 @@ position = Vector2( 782, 609 )
 
 [node name="Torch2" parent="YSort" instance=ExtResource( 7 )]
 position = Vector2( 1157, 416 )
+
+[node name="Teleporter_start" parent="YSort" instance=ExtResource( 10 )]
+position = Vector2( 1240, 674 )
+state = false
 
 [node name="Base" type="TileMap" parent="."]
 tile_set = ExtResource( 1 )

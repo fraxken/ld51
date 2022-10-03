@@ -13,19 +13,26 @@
 script = ExtResource( 5 )
 
 [node name="Background" type="ColorRect" parent="."]
-margin_left = -1095.0
-margin_top = -937.0
-margin_right = 1885.0
-margin_bottom = 1172.0
-color = Color( 0.0941176, 0.0666667, 0.0666667, 1 )
+margin_left = -832.0
+margin_top = -800.0
+margin_right = 2083.0
+margin_bottom = 1266.0
+color = Color( 0.168627, 0.133333, 0.164706, 1 )
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color( 0.733333, 0.666667, 0.411765, 1 )
 
 [node name="StartPosition" type="Node2D" parent="."]
-position = Vector2( 805, 611 )
+position = Vector2( 800, 611 )
 
 [node name="YSort" type="YSort" parent="."]
 
+[node name="Teleporter_start" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 801, 642 )
+state = false
+
 [node name="Box" parent="YSort" instance=ExtResource( 2 )]
-position = Vector2( 758, 621 )
+position = Vector2( 718, 621 )
 
 [node name="LevelTeleporter" parent="YSort" instance=ExtResource( 3 )]
 position = Vector2( 384, 194 )
@@ -145,7 +152,7 @@ rotation = 3.14159
 position = Vector2( 704, 352 )
 
 [node name="Torch2" parent="YSort" instance=ExtResource( 6 )]
-position = Vector2( 731, 504 )
+position = Vector2( 667, 504 )
 
 [node name="Base" type="TileMap" parent="."]
 tile_set = ExtResource( 1 )
@@ -163,4 +170,4 @@ position = Vector2( 487, 71 )
 tile_set = ExtResource( 8 )
 cell_size = Vector2( 32, 32 )
 format = 1
-tile_data = PoolIntArray( -65526, 2, 0, 393241, 536870939, 0, 720910, 29, 0, 851982, 11, 0, 1048598, 23, 0, 1245204, 27, 0, 1245209, 27, 0 )
+tile_data = PoolIntArray( -65526, 2, 0, 393241, 536870939, 0, 720910, 29, 0, 851982, 11, 0, 1048596, 23, 0, 1245204, 27, 0, 1245209, 27, 0 )
