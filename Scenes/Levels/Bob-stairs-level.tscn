@@ -1,0 +1,166 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Assets/TileSets/RuinsTileSet_v2.tres" type="TileSet" id=1]
+[ext_resource path="res://Scenes/Props/MovableBox.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Props/LevelTeleporter.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Props/FallingPlatform.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scripts/LevelController.gd" type="Script" id=5]
+[ext_resource path="res://Scenes/SFX/Torch.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Props/SpikePlate.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Assets/TileSets/RuinsTileSet.tres" type="TileSet" id=8]
+
+[node name="stairs-level" type="Node2D"]
+script = ExtResource( 5 )
+
+[node name="Background" type="ColorRect" parent="."]
+margin_left = -1095.0
+margin_top = -937.0
+margin_right = 1885.0
+margin_bottom = 1172.0
+color = Color( 0.0941176, 0.0666667, 0.0666667, 1 )
+
+[node name="StartPosition" type="Node2D" parent="."]
+position = Vector2( 805, 611 )
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="Box" parent="YSort" instance=ExtResource( 2 )]
+position = Vector2( 758, 621 )
+
+[node name="LevelTeleporter" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 384, 194 )
+target_scene = "res://Scenes/Levels/02.tscn"
+
+[node name="Box2" parent="YSort" instance=ExtResource( 2 )]
+position = Vector2( 490, 461 )
+
+[node name="FirstSpikesContainer" type="YSort" parent="YSort"]
+
+[node name="SpikePlate5" parent="YSort/FirstSpikesContainer" instance=ExtResource( 7 )]
+position = Vector2( 677, 0 )
+rotation = 3.14159
+
+[node name="SpikePlate6" parent="YSort/FirstSpikesContainer" instance=ExtResource( 7 )]
+position = Vector2( 646, 0 )
+rotation = 3.14159
+
+[node name="SpikePlate7" parent="YSort/FirstSpikesContainer" instance=ExtResource( 7 )]
+position = Vector2( 615, 0 )
+rotation = 3.14159
+
+[node name="SpikePlate8" parent="YSort/FirstSpikesContainer" instance=ExtResource( 7 )]
+position = Vector2( 584, 0 )
+rotation = 3.14159
+
+[node name="SpikePlate9" parent="YSort/FirstSpikesContainer" instance=ExtResource( 7 )]
+position = Vector2( 553, 0 )
+rotation = 3.14159
+
+[node name="SpikePlate10" parent="YSort/FirstSpikesContainer" instance=ExtResource( 7 )]
+position = Vector2( 522, 0 )
+rotation = 3.14159
+
+[node name="SpikePlate11" parent="YSort/FirstSpikesContainer" instance=ExtResource( 7 )]
+position = Vector2( 491, 0 )
+rotation = 3.14159
+
+[node name="SpikePlate12" parent="YSort/FirstSpikesContainer" instance=ExtResource( 7 )]
+position = Vector2( 460, 0 )
+rotation = 3.14159
+
+[node name="SpikePlate13" parent="YSort/FirstSpikesContainer" instance=ExtResource( 7 )]
+position = Vector2( 429, 0 )
+rotation = 3.14159
+
+[node name="SpikePlate16" parent="YSort/FirstSpikesContainer" instance=ExtResource( 7 )]
+position = Vector2( 708, 0 )
+rotation = 3.14159
+
+[node name="SecondSpikesContainer" type="YSort" parent="YSort"]
+
+[node name="SpikePlate5" parent="YSort/SecondSpikesContainer" instance=ExtResource( 7 )]
+position = Vector2( 619, 193 )
+
+[node name="SpikePlate6" parent="YSort/SecondSpikesContainer" instance=ExtResource( 7 )]
+position = Vector2( 588, 193 )
+
+[node name="SpikePlate7" parent="YSort/SecondSpikesContainer" instance=ExtResource( 7 )]
+position = Vector2( 557, 193 )
+
+[node name="SpikePlate8" parent="YSort/SecondSpikesContainer" instance=ExtResource( 7 )]
+position = Vector2( 526, 193 )
+
+[node name="SpikePlate9" parent="YSort/SecondSpikesContainer" instance=ExtResource( 7 )]
+position = Vector2( 495, 193 )
+
+[node name="SpikePlate10" parent="YSort/SecondSpikesContainer" instance=ExtResource( 7 )]
+position = Vector2( 464, 193 )
+
+[node name="SpikePlate11" parent="YSort/SecondSpikesContainer" instance=ExtResource( 7 )]
+position = Vector2( 433, 193 )
+
+[node name="ThirdSpikesContainer" type="YSort" parent="YSort"]
+
+[node name="SpikePlate5" parent="YSort/ThirdSpikesContainer" instance=ExtResource( 7 )]
+position = Vector2( 528, 255 )
+rotation = 3.14159
+
+[node name="SpikePlate6" parent="YSort/ThirdSpikesContainer" instance=ExtResource( 7 )]
+position = Vector2( 559, 255 )
+rotation = 3.14159
+
+[node name="SpikePlate7" parent="YSort/ThirdSpikesContainer" instance=ExtResource( 7 )]
+position = Vector2( 590, 255 )
+rotation = 3.14159
+
+[node name="SpikePlate8" parent="YSort/ThirdSpikesContainer" instance=ExtResource( 7 )]
+position = Vector2( 621, 255 )
+rotation = 3.14159
+
+[node name="SpikePlate9" parent="YSort/ThirdSpikesContainer" instance=ExtResource( 7 )]
+position = Vector2( 649, 448 )
+rotation = 3.14159
+
+[node name="SpikePlate10" parent="YSort/ThirdSpikesContainer" instance=ExtResource( 7 )]
+position = Vector2( 680, 448 )
+rotation = 3.14159
+
+[node name="SpikePlate11" parent="YSort/ThirdSpikesContainer" instance=ExtResource( 7 )]
+position = Vector2( 711, 448 )
+rotation = 3.14159
+
+[node name="SpikePlate12" parent="YSort/ThirdSpikesContainer" instance=ExtResource( 7 )]
+position = Vector2( 742, 448 )
+rotation = 3.14159
+
+[node name="SpikePlate13" parent="YSort/ThirdSpikesContainer" instance=ExtResource( 7 )]
+position = Vector2( 773, 448 )
+rotation = 3.14159
+
+[node name="SpikePlate14" parent="YSort/ThirdSpikesContainer" instance=ExtResource( 7 )]
+position = Vector2( 804, 448 )
+rotation = 3.14159
+
+[node name="Torch" parent="YSort" instance=ExtResource( 6 )]
+position = Vector2( 704, 352 )
+
+[node name="Torch2" parent="YSort" instance=ExtResource( 6 )]
+position = Vector2( 731, 504 )
+
+[node name="Base" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( -1245202, 0, 0, -65526, 2, 65537, -65525, 2, 2, -65524, 2, 4, -65523, 2, 1, -65522, 2, 2, -65521, 2, 3, -65520, 2, 4, -65519, 2, 2, -65518, 2, 3, -65517, 2, 6, -65516, 2, 5, -65515, 2, 3, -65514, 2, 4, -65513, 2, 131073, 10, 7, 196608, 11, 7, 655360, 12, 7, 655361, 23, 7, 720896, 65546, 7, 65537, 65559, 7, 524288, 131082, 7, 131072, 131095, 2, 65537, 131096, 2, 2, 131097, 2, 4, 131098, 2, 131073, 196618, 7, 0, 196634, 7, 65537, 262154, 7, 1, 262170, 7, 0, 327690, 7, 65536, 327706, 7, 1, 393226, 3, 65537, 393227, 3, 3, 393228, 3, 4, 393229, 3, 5, 393230, 3, 1, 393231, 3, 2, 393232, 3, 3, 393233, 3, 4, 393234, 3, 6, 393235, 3, 131073, 393242, 7, 2, 458767, 2, 65537, 458768, 2, 1, 458769, 2, 5, 458770, 2, 3, 458771, 2, 131073, 458775, 3, 65537, 458776, 3, 2, 458777, 3, 5, 458778, 3, 131073, 524303, 7, 65536, 524311, 7, 2, 589839, 7, 131072, 589847, 7, 65536, 655372, 2, 65537, 655373, 2, 2, 655374, 2, 1, 655375, 2, 131073, 655383, 7, 65537, 720908, 7, 131072, 720919, 7, 131072, 786444, 7, 0, 786451, 3, 65537, 786452, 3, 5, 786453, 3, 3, 786454, 3, 2, 786455, 3, 131073, 851980, 7, 1, 851987, 2, 65537, 851988, 2, 1, 851989, 2, 5, 851990, 2, 4, 851991, 2, 6, 851992, 2, 2, 851993, 2, 3, 851994, 2, 131073, 917516, 7, 2, 917530, 7, 1, 983052, 3, 65537, 983053, 3, 3, 983054, 3, 2, 983055, 3, 1, 983056, 3, 5, 983057, 3, 131073, 983066, 7, 131072, 1048593, 7, 2, 1048602, 7, 65537, 1114129, 7, 65536, 1114138, 7, 2, 1179665, 7, 65537, 1179674, 7, 1, 1245201, 7, 0, 1245210, 7, 0, 1310737, 3, 65537, 1310738, 3, 5, 1310739, 3, 4, 1310740, 3, 1, 1310741, 3, 2, 1310742, 3, 3, 1310743, 3, 4, 1310744, 3, 6, 1310745, 3, 5, 1310746, 3, 131073 )
+
+[node name="PlatformContainer" parent="Base" instance=ExtResource( 4 )]
+position = Vector2( 604, 71 )
+
+[node name="PlatformContainer2" parent="Base" instance=ExtResource( 4 )]
+position = Vector2( 487, 71 )
+
+[node name="TM_Decor" type="TileMap" parent="."]
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( -65526, 2, 0, 393241, 536870939, 0, 720910, 29, 0, 851982, 11, 0, 1048598, 23, 0, 1245204, 27, 0, 1245209, 27, 0 )
