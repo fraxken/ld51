@@ -1,8 +1,8 @@
 extends KinematicBody2D
 
 export (int) var speed = 50
-export (int) var max_speed = 150
-export (int) var jump_speed = 270
+export (int) var max_speed = 160
+export (int) var jump_speed = 280
 export (int) var max_jump = 1
 
 onready var gravityTimer = $GravityTimer
