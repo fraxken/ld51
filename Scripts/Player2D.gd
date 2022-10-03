@@ -10,6 +10,7 @@ onready var dieTimer = $DieTimer
 
 var velocity = Vector2.ZERO
 var jumpCount: int = 0
+var wallJumpCount: int = 0
 
 var friction = false
 
@@ -83,18 +84,20 @@ func jump(isOnGround: bool):
 	if touchedGroundAtLeastOnce == false && isOnGround:
 		touchedGroundAtLeastOnce = true
 
-	if isOnGround or nextToWall():
-		if nextToWall() and not is_on_floor() and not is_on_ceiling():
-			var jump_power = 300
-			var jump_direction = jump_power if nextToLeftWall() else -jump_power
-			velocity.x = jump_direction
-		velocity.y = localJumpSpeed
-		jumpCount = 0
-	elif jumpCount < max_jump:
+	if isOnGround or (nextToWall() and wallJumpCount < 1):
 		velocity.y = localJumpSpeed
 		
-		if not nextToWall():
-			jumpCount += 1
+		if nextToWall() and not is_on_floor() and not is_on_ceiling():
+			wallJumpCount += 1
+			var bounce_power = 150
+			var bounce_direction = bounce_power if nextToLeftWall() else -bounce_power
+			velocity.x = bounce_direction
+		else:
+			jumpCount = 0
+
+	elif jumpCount < max_jump:
+		velocity.y = localJumpSpeed
+		jumpCount += 1
 
 func nextToWall():
 	return nextToRightWall() or nextToLeftWall()
@@ -136,10 +139,14 @@ func _physics_process(delta):
 	if (!is_on_floor() && Globals.reverseGravityEnabled == false) || (!is_on_ceiling() && Globals.reverseGravityEnabled == true):
 		allowActions = false
 	
-	if nextToWall() and not is_on_floor() and not is_on_ceiling() and not Input.is_action_pressed("jump"):
-		var slide_power = 60
-		var slide = slide_power if not Globals.reverseGravityEnabled else -slide_power
-		velocity.y = slide
+	if (is_on_floor() and not Globals.reverseGravityEnabled) or (is_on_ceiling() and Globals.reverseGravityEnabled):
+		wallJumpCount = 0
+	
+#	WALL SLIDE
+#	if nextToWall() and not is_on_floor() and not is_on_ceiling() and not Input.is_action_pressed("jump"):
+#		var slide_power = 60
+#		var slide = slide_power if not Globals.reverseGravityEnabled else -slide_power
+#		velocity.y = slide
 	
 	if allowActions or touchedGroundAtLeastOnce:
 		var isOnGround = is_on_floor() || is_on_ceiling()
