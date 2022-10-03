@@ -179,6 +179,16 @@ position = Vector2( -4, 9 )
 enabled = true
 cast_to = Vector2( 9, 0 )
 
+[node name="RigthWall" type="RayCast2D" parent="."]
+position = Vector2( -4, 3 )
+enabled = true
+cast_to = Vector2( 15, 0 )
+
+[node name="LeftWall" type="RayCast2D" parent="."]
+position = Vector2( -4, 3 )
+enabled = true
+cast_to = Vector2( -15, 0 )
+
 [connection signal="timeout" from="Camera2D/Timer" to="Camera2D" method="_on_Timer_timeout"]
 [connection signal="timeout" from="GravityTimer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="DieTimer" to="." method="_on_DieTimer_timeout"]

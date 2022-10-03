@@ -83,12 +83,27 @@ func jump(isOnGround: bool):
 	if touchedGroundAtLeastOnce == false && isOnGround:
 		touchedGroundAtLeastOnce = true
 
-	if isOnGround:
+	if isOnGround or nextToWall():
+		if nextToWall() and not is_on_floor() and not is_on_ceiling():
+			var jump_power = 300
+			var jump_direction = jump_power if nextToLeftWall() else -jump_power
+			velocity.x = jump_direction
 		velocity.y = localJumpSpeed
 		jumpCount = 0
 	elif jumpCount < max_jump:
 		velocity.y = localJumpSpeed
-		jumpCount += 1
+		
+		if not nextToWall():
+			jumpCount += 1
+
+func nextToWall():
+	return nextToRightWall() or nextToLeftWall()
+
+func nextToRightWall():
+	return $RigthWall.is_colliding()
+
+func nextToLeftWall():
+	return $LeftWall.is_colliding()
 
 func computeDirection():
 	if Input.is_action_pressed("ui_right"):
@@ -120,6 +135,11 @@ func _physics_process(delta):
 	var allowActions = true
 	if (!is_on_floor() && Globals.reverseGravityEnabled == false) || (!is_on_ceiling() && Globals.reverseGravityEnabled == true):
 		allowActions = false
+	
+	if nextToWall() and not is_on_floor() and not is_on_ceiling() and not Input.is_action_pressed("jump"):
+		var slide_power = 60
+		var slide = slide_power if not Globals.reverseGravityEnabled else -slide_power
+		velocity.y = slide
 	
 	if allowActions or touchedGroundAtLeastOnce:
 		var isOnGround = is_on_floor() || is_on_ceiling()
