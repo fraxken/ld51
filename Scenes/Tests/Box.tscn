@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scenes/Props/ReactiveArea.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Props/MovableBox.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Scenes/Props/FallingTrap.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scripts/LevelController.gd" type="Script" id=5]
 [ext_resource path="res://Assets/TileSets/PlaceholderTileSet.tres" type="TileSet" id=6]
+[ext_resource path="res://Assets/Sounds/ancient-wind-112528.wav" type="AudioStream" id=7]
 
 [node name="LevelTest" type="Node2D"]
 script = ExtResource( 5 )
@@ -34,10 +35,15 @@ position = Vector2( 532, 556 )
 ActionableItemPath = NodePath("../ReactiveArea")
 move_to = Vector2( 0, 60 )
 idle_duration = 1
-repeat = false
 
 [node name="Projector2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 384, 512 )
 time_between_projectile = 2
 projectile_direction = Vector2( -1, 0 )
 projectile_speed = 200
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+pause_mode = 2
+stream = ExtResource( 7 )
+volume_db = -6.0
+autoplay = true

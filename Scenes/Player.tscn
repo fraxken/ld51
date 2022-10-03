@@ -5,6 +5,7 @@
 [ext_resource path="res://Scripts/Camera2D.gd" type="Script" id=4]
 [ext_resource path="res://Interfaces/Interface.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Assets/Characters/character.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Sounds/male_hurt7-48124.wav" type="AudioStream" id=6]
 
 [sub_resource type="Shader" id=14]
 code = "shader_type canvas_item;
@@ -230,6 +231,10 @@ anims/Walk = SubResource( 13 )
 [node name="FlashPlayer" type="AnimationPlayer" parent="."]
 anims/Flash = SubResource( 16 )
 anims/RESET = SubResource( 17 )
+
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 6 )
+volume_db = -10.0
 
 [connection signal="timeout" from="Camera2D/Timer" to="Camera2D" method="_on_Timer_timeout"]
 [connection signal="timeout" from="GravityTimer" to="." method="_on_Timer_timeout"]
