@@ -33,11 +33,6 @@ func _ready():
 	
 	dieTimer.set_wait_time(0.2)
 	dieTimer.connect("timeout", self, "_die_timeout")
-
-func _input(event):
-	if event.is_action_pressed("gravity"):
-		gravityTimer.start()
-		_reverseGravity()
 		
 func die():
 	deathSound.play()
