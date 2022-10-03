@@ -126,7 +126,7 @@ texture = ExtResource( 10 )
 shape = SubResource( 1 )
 
 [node name="ReactiveArea" parent="YSort" instance=ExtResource( 12 )]
-position = Vector2( 480, 448 )
+position = Vector2( 416, 544 )
 
 [node name="Torch" parent="YSort" instance=ExtResource( 14 )]
 position = Vector2( 512, 320 )

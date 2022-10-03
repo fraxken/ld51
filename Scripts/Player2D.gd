@@ -1,12 +1,13 @@
 extends KinematicBody2D
 
 export (int) var speed = 50
-export (int) var max_speed = 150
-export (int) var jump_speed = 270
+export (int) var max_speed = 160
+export (int) var jump_speed = 265
 export (int) var max_jump = 1
 
 onready var gravityTimer = $GravityTimer
 onready var dieTimer = $DieTimer
+onready var deathSound = $DeathSound
 
 var velocity = Vector2.ZERO
 var jumpCount: int = 0
@@ -39,6 +40,7 @@ func _input(event):
 		_reverseGravity()
 		
 func die():
+	deathSound.play()
 	_resetGravity()
 	$AnimationPlayer.play("Idle")
 	hit()
@@ -68,6 +70,7 @@ func dash():
 		
 		velocity = direction.normalized() * 1000
 		canDash = false
+		$AnimationPlayer.play("Dash")
 		
 		var dash_cooldown = 1
 		if player_was_moving:
@@ -98,6 +101,7 @@ func jump(isOnGround: bool):
 	elif jumpCount < max_jump:
 		velocity.y = localJumpSpeed
 		jumpCount += 1
+	playJumpAnimation()
 
 func nextToWall():
 	return nextToRightWall() or nextToLeftWall()
@@ -120,8 +124,20 @@ func computeDirection():
 		$Sprite.flip_h = true
 		$AnimationPlayer.play("Walk")
 	else:
-		$AnimationPlayer.play("Idle")
+		playRunToIdleAnimation()
 		friction = true
+		
+func playJumpAnimation():
+	if $AnimationPlayer.current_animation != "JumpUp":
+		$AnimationPlayer.play("ImpulsionJump")
+		yield($AnimationPlayer, "animation_finished")
+		$AnimationPlayer.play("JumpUp")
+		
+func playRunToIdleAnimation():
+	if $AnimationPlayer.current_animation != "Idle":
+		$AnimationPlayer.play("StopRun")
+		yield($AnimationPlayer, "animation_finished")
+		$AnimationPlayer.play("Idle")
 
 func _physics_process(delta):
 	velocity.y += -(Globals.gravity * delta) if Globals.reverseGravityEnabled else (Globals.gravity * delta)

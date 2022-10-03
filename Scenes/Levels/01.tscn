@@ -173,16 +173,16 @@ position = Vector2( 1040, 512 )
 rotation = -3.14159
 
 [node name="Trap_activator_1" parent="YSort" instance=ExtResource( 11 )]
-position = Vector2( 544, 320 )
+position = Vector2( 448, 320 )
 rotation = -3.14159
 
 [node name="Trap_1" parent="YSort" instance=ExtResource( 9 )]
 position = Vector2( 576, 416 )
 rotation = -3.14159
 ActionableItemPath = NodePath("../Trap_activator_1")
-move_time = 2
 move_to = Vector2( 0, 120 )
-idle_duration = 0
+idle_duration = 1
+repeat = false
 
 [node name="Torch" parent="YSort" instance=ExtResource( 8 )]
 position = Vector2( 1184, 736 )
