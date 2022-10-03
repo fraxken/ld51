@@ -42,6 +42,8 @@ func die():
 	$AnimationPlayer.play("Idle")
 	hit()
 	set_physics_process(false)
+	velocity = Vector2.ZERO
+	direction = Vector2.ZERO
 	dieTimer.start()
 
 func _die_timeout():
