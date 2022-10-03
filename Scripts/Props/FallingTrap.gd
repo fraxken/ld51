@@ -16,7 +16,7 @@ var targetNode: Node2D
 
 func _ready():
 	targetNode = get_node(ActionableItemPath)
-	targetNode.connect("reactiveArea_turned", self, "_open", [], CONNECT_ONESHOT)
+	targetNode.connect("reactiveArea_turned", self, "_open")
 	if repeat == true:
 		tween.set_deferred("repeat", true)
 
