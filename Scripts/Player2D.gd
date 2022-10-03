@@ -29,7 +29,7 @@ func _ready():
 	gravityTimer.set_wait_time(10)
 	gravityTimer.start()
 	
-	dieTimer.set_wait_time(0.1)
+	dieTimer.set_wait_time(0.2)
 	dieTimer.connect("timeout", self, "_die_timeout")
 
 func _input(event):
@@ -39,8 +39,6 @@ func _input(event):
 		
 func die():
 	_resetGravity()
-	gravityTimer.stop()
-	gravityTimer.start(10)
 	$AnimationPlayer.play("Idle")
 	hit()
 	set_physics_process(false)
@@ -50,6 +48,9 @@ func _die_timeout():
 	var nodes = Utils.findNodeDescendantsInGroup(get_node("/root"), "Reset")
 	for node in nodes:
 		if node.has_method("reset_initial"): node.reset_initial()
+		
+	Globals.timerBar.start()
+	gravityTimer.start(10)
 	set_physics_process(true)
 		
 func dash():
@@ -141,11 +142,13 @@ func hit():
 	Globals.camera.shake(100)
 
 func _resetGravity():
+	gravityTimer.stop()
+	
 	var nodes = Utils.findNodeDescendantsInGroup(get_node("/root"), "Gravity")
 	for node in nodes:
 		if node.has_method("reset_gravity"): node.reset_gravity()
 		
-	Globals.timerBar.reset()
+	Globals.timerBar.stop()
 	Globals.reverseGravityEnabled = false
 	$Sprite.flip_v = false
 	touchedGroundAtLeastOnce = false
@@ -155,13 +158,13 @@ func _reverseGravity():
 	for node in nodes:
 		if node.has_method("reverse_gravity"): node.reverse_gravity()
 	
+	Globals.timerBar.reset()
 	Globals.camera.shake(100)
 	Globals.reverseGravityEnabled = not Globals.reverseGravityEnabled
 	$Sprite.flip_v = not $Sprite.flip_v
 	touchedGroundAtLeastOnce = false
 
 func _on_Timer_timeout():
-	print("[Player Script] gravity reversed!")
 	_reverseGravity()
 	
 func check_box_collision():
