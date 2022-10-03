@@ -1,15 +1,15 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scenes/Silkscreen-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Scripts/UI/StartScreen.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/Silkscreen-Bold.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Interfaces/buttons/button.png" type="Texture" id=4]
+[ext_resource path="res://Interfaces/buttons/button_pressed.png" type="Texture" id=5]
 
-[sub_resource type="DynamicFont" id=1]
-size = 32
-font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFont" id=2]
-size = 32
+[sub_resource type="DynamicFont" id=5]
+size = 29
+outline_size = 2
+outline_color = Color( 0.592157, 0.52549, 0.47451, 1 )
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=3]
@@ -32,29 +32,31 @@ margin_top = 320.0
 margin_right = 800.0
 margin_bottom = 480.0
 
-[node name="PlayButton" type="Button" parent="VBoxContainer"]
+[node name="PlayButton" type="TextureButton" parent="VBoxContainer"]
 margin_right = 320.0
-margin_bottom = 78.0
-size_flags_vertical = 3
+margin_bottom = 80.0
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 5 )
 
 [node name="Label" type="Label" parent="VBoxContainer/PlayButton"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 5 )
 text = "Play Again"
 align = 1
 valign = 1
 
-[node name="ExitButton" type="Button" parent="VBoxContainer"]
-margin_top = 82.0
+[node name="ExitButton" type="TextureButton" parent="VBoxContainer"]
+margin_top = 84.0
 margin_right = 320.0
-margin_bottom = 160.0
-size_flags_vertical = 3
+margin_bottom = 164.0
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 5 )
 
 [node name="Label" type="Label" parent="VBoxContainer/ExitButton"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 5 )
 text = "Exit Game"
 align = 1
 valign = 1
