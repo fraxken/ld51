@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/Props/LevelTeleporter.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Props/teleport-door.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Lights/light.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 48 )
@@ -39,6 +40,13 @@ shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Open = SubResource( 2 )
+
+[node name="Light2D" type="Light2D" parent="."]
+position = Vector2( 0, -16 )
+texture = ExtResource( 3 )
+texture_scale = 0.5
+color = Color( 0.713726, 0.145098, 0.145098, 1 )
+shadow_enabled = true
 
 [connection signal="body_entered" from="." to="." method="_on_LevelTeleporter_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_LevelTeleporter_body_exited"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Assets/TileSets/RuinsTileSet_v2.tres" type="TileSet" id=1]
 [ext_resource path="res://Scenes/Props/MovingPlatform.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Scenes/Props/LevelTeleporter.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/Props/MovingSpike.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Scenes/Props/SpikePlate.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenes/SFX/Torch.tscn" type="PackedScene" id=10]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -231,6 +232,15 @@ rotation = 1.5708
 [node name="SpikePlate19" parent="YSort/SpikesContainer" instance=ExtResource( 9 )]
 position = Vector2( 736, 336 )
 rotation = -1.5708
+
+[node name="Torch" parent="YSort" instance=ExtResource( 10 )]
+position = Vector2( 656, 608 )
+
+[node name="Torch2" parent="YSort" instance=ExtResource( 10 )]
+position = Vector2( 656, 96 )
+
+[node name="Torch3" parent="YSort" instance=ExtResource( 10 )]
+position = Vector2( 208, -160 )
 
 [node name="TM_Base" type="TileMap" parent="."]
 tile_set = ExtResource( 1 )

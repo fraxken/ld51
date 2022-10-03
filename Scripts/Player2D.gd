@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 export (int) var speed = 50
 export (int) var max_speed = 150
-export (int) var jump_speed = 270
+export (int) var jump_speed = 250
 export (int) var max_jump = 1
 
 onready var gravityTimer = $GravityTimer
@@ -42,9 +42,12 @@ func die():
 	$AnimationPlayer.play("Idle")
 	hit()
 	set_physics_process(false)
+	_reset_velocity()
+	dieTimer.start()
+	
+func _reset_velocity():
 	velocity = Vector2.ZERO
 	direction = Vector2.ZERO
-	dieTimer.start()
 
 func _die_timeout():
 	var nodes = Utils.findNodeDescendantsInGroup(get_node("/root"), "Reset")
@@ -150,6 +153,7 @@ func _resetGravity():
 	for node in nodes:
 		if node.has_method("reset_gravity"): node.reset_gravity()
 		
+	_reset_velocity()
 	Globals.timerBar.stop()
 	Globals.reverseGravityEnabled = false
 	$Sprite.flip_v = false

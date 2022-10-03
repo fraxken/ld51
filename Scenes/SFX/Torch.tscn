@@ -22,6 +22,7 @@ tracks/0/keys = {
 }
 
 [node name="Torch" type="Sprite"]
+modulate = Color( 1.5, 1.5, 1.5, 1 )
 texture = ExtResource( 1 )
 hframes = 6
 vframes = 5
