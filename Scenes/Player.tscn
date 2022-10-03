@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Scripts/Player2D.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Characters/character.png" type="Texture" id=2]
@@ -77,6 +77,22 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ 54, 55, 56 ]
+}
+
+[sub_resource type="Animation" id=22]
+resource_name = "JumpHight "
+length = 0.28
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 90, 91, 92 ]
 }
 
 [sub_resource type="Animation" id=20]
@@ -172,7 +188,7 @@ scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 2 )
 hframes = 18
 vframes = 12
-frame = 144
+frame = 92
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -14 )
@@ -225,6 +241,7 @@ one_shot = true
 anims/Dash = SubResource( 21 )
 anims/Idle = SubResource( 12 )
 anims/ImpulsionJump = SubResource( 19 )
+"anims/JumpHight " = SubResource( 22 )
 anims/JumpUp = SubResource( 20 )
 anims/StopRun = SubResource( 18 )
 anims/Walk = SubResource( 13 )
