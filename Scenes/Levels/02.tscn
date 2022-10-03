@@ -280,11 +280,11 @@ target_scene = "res://Scenes/Levels/03.tscn"
 position = Vector2( 1200, 768 )
 state = false
 
-[node name="Lever" parent="YSort" instance=ExtResource( 3 )]
+[node name="Lever" parent="YSort" groups=["Reset"] instance=ExtResource( 3 )]
 position = Vector2( 1247, 444 )
 rotation = 3.14159
 
-[node name="Lever2" parent="YSort" instance=ExtResource( 3 )]
+[node name="Lever2" parent="YSort" groups=["Reset"] instance=ExtResource( 3 )]
 position = Vector2( 1376, 220 )
 rotation = 3.14159
 

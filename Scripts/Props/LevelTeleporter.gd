@@ -12,6 +12,9 @@ func _ready():
 	animPlayer.play_backwards("Open")
 	
 func _input(event):
+	if event.is_action_pressed("ui_skip") && target_scene:
+		_next_level()
+		
 	if !state:
 		return
 		
@@ -20,10 +23,13 @@ func _input(event):
 		if !target_scene:
 			print("no scene configured!")
 			return
-		Globals.playerCanMove = false
-		Globals.player._resetGravity()
-		SceneChanger.next_scene(target_scene)
+		_next_level()
 
+func _next_level():
+	Globals.playerCanMove = false
+	Globals.player._resetGravity()
+	SceneChanger.next_scene(target_scene)
+	
 func _on_LevelTeleporter_body_entered(body):
 	if state && body.is_in_group("player"):
 		playerEntered = true

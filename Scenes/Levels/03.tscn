@@ -69,10 +69,10 @@ position = Vector2( 512, 32 )
 ActionableItemPath = NodePath("../Lever2")
 move_to = Vector2( 0, -96 )
 
-[node name="Lever" parent="YSort" instance=ExtResource( 3 )]
+[node name="Lever" parent="YSort" groups=["Reset"] instance=ExtResource( 3 )]
 position = Vector2( 880, 259 )
 
-[node name="Lever2" parent="YSort" instance=ExtResource( 3 )]
+[node name="Lever2" parent="YSort" groups=["Reset"] instance=ExtResource( 3 )]
 position = Vector2( 193, -227 )
 rotation = 3.14159
 

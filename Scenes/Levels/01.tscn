@@ -47,7 +47,7 @@ texture = ExtResource( 10 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/RockBoxContainer"]
 shape = SubResource( 1 )
 
-[node name="Lever" parent="YSort" instance=ExtResource( 3 )]
+[node name="Lever" parent="YSort" groups=["Reset"] instance=ExtResource( 3 )]
 position = Vector2( 544, 608 )
 
 [node name="Door" parent="YSort" instance=ExtResource( 4 )]
