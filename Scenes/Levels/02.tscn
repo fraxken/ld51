@@ -274,7 +274,7 @@ idle_duration = 0
 
 [node name="teleporter_end" parent="YSort" instance=ExtResource( 7 )]
 position = Vector2( 672, 416 )
-target_scene = "res://Scenes/Levels/03.tscn"
+target_scene = "res://Scenes/Levels/frax_A.tscn"
 
 [node name="teleporter_start" parent="YSort" instance=ExtResource( 7 )]
 position = Vector2( 1200, 768 )

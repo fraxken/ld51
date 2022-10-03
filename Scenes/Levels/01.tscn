@@ -32,7 +32,7 @@ position = Vector2( 1312, 736 )
 
 [node name="Teleporter_end" parent="YSort" instance=ExtResource( 7 )]
 position = Vector2( 832, 384 )
-target_scene = "res://Scenes/Levels/02.tscn"
+target_scene = "res://Scenes/Levels/frax_C.tscn"
 
 [node name="Teleporter_start" parent="YSort" instance=ExtResource( 7 )]
 position = Vector2( 1312, 768 )

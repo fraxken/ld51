@@ -66,7 +66,7 @@ ActionableItemPath = NodePath("../ReactiveArea")
 
 [node name="Teleporter_end" parent="YSort" instance=ExtResource( 7 )]
 position = Vector2( -384, 96 )
-target_scene = "res://Scenes/Levels/02.tscn"
+target_scene = "res://Scenes/Levels/03.tscn"
 
 [node name="Teleporter_start" parent="YSort" instance=ExtResource( 7 )]
 position = Vector2( 416, 352 )
