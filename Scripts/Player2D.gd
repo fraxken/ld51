@@ -7,6 +7,7 @@ export (int) var max_jump = 1
 
 onready var gravityTimer = $GravityTimer
 onready var dieTimer = $DieTimer
+onready var deathSound = $DeathSound
 
 var velocity = Vector2.ZERO
 var jumpCount: int = 0
@@ -39,6 +40,7 @@ func _input(event):
 		_reverseGravity()
 		
 func die():
+	deathSound.play()
 	_resetGravity()
 	$AnimationPlayer.play("Idle")
 	hit()

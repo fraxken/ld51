@@ -53,7 +53,7 @@ frame = 27
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationBox" type="AnimationPlayer" parent="."]
 anims/Idle = SubResource( 3 )
 anims/Take = SubResource( 2 )
 
