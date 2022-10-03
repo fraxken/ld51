@@ -1,6 +1,7 @@
 extends Node2D
 
 export (NodePath) var ActionableItemPath = null
+export (NodePath) var ActionableItemPathBis = null
 export (bool) var state = false
 export (int) var move_time = 1.5
 export (int) var opening_delay = 0.2
@@ -11,17 +12,24 @@ onready var tween = $MoveTween
 
 var follow = Vector2.ZERO
 var targetNode: Node2D
+var targetNode2: Node2D
 
 func _ready():
 	tween.stop_all()
 	targetNode = get_node(ActionableItemPath)
-	targetNode.connect("lever_turned", self, "_trigger")
-	if targetNode.has_method("register"):
-		targetNode.register()
+	_connectNode(targetNode)
+	if ActionableItemPathBis != null:
+		targetNode2 = get_node(ActionableItemPathBis)
+		_connectNode(targetNode2)
 		
 	if state:
 		door.position = move_to
 		follow = move_to
+		
+func _connectNode(node: Node2D):
+	node.connect("lever_turned", self, "_trigger")
+	if node.has_method("register"):
+		node.register()
 		
 func _physics_process(delta):
 	door.position = door.position.linear_interpolate(follow, 0.075)
@@ -46,3 +54,5 @@ func close():
 
 func _on_MoveTween_tween_all_completed():
 	targetNode.unlock()
+	if targetNode2:
+		targetNode2.unlock()
